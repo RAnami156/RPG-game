@@ -8,12 +8,19 @@ enum {
 }
 
 @onready var anim = $AnimatedSprite2D
+@onready var animP = $AnimationPlayer
 var speed = 100
 var idle_dir = DOWN
+var can_move = true
 
 func _physics_process(delta: float) -> void:
+	if !can_move:
+		return
+	
 	run()
-	if Input.is_action_pressed("up"):
+	if Input.is_action_just_pressed("attack"):
+		attack()
+	elif  Input.is_action_pressed("up") :
 		up_move()
 	elif Input.is_action_pressed("down"):
 		down_move()
@@ -68,3 +75,22 @@ func idle():
 			RIGHT:
 				anim.flip_h = false
 				anim.play("Idle_front")
+				
+func attack():
+	velocity =Vector2.ZERO
+	can_move = false
+	if velocity == Vector2.ZERO:
+		match idle_dir:
+			DOWN:
+				animP.play("Attack_down")
+			UP:
+				animP.play("Attack_up")
+			LEFT:
+				anim.flip_h = true
+				animP.play("attack_left")
+			RIGHT:
+				anim.flip_h = false
+				animP.play("Attack_right")
+				
+	await anim.animation_finished
+	can_move = true
