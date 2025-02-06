@@ -1,7 +1,27 @@
-[gd_scene load_steps=16 format=3 uid="uid://c537x7b50acea"]
+[gd_scene load_steps=21 format=3 uid="uid://c537x7b50acea"]
 
-[ext_resource type="Script" path="res://scene/enemy.gd" id="1_5v0jf"]
+[ext_resource type="Script" path="res://script/enemy.gd" id="1_5v0jf"]
 [ext_resource type="Texture2D" uid="uid://1in8w1eifrq2" path="res://slime.png" id="2_5vdto"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55atp"]
+atlas = ExtResource("2_5vdto")
+region = Rect2(0, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs77o"]
+atlas = ExtResource("2_5vdto")
+region = Rect2(32, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g42wp"]
+atlas = ExtResource("2_5vdto")
+region = Rect2(64, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt8w5"]
+atlas = ExtResource("2_5vdto")
+region = Rect2(96, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8h56"]
+atlas = ExtResource("2_5vdto")
+region = Rect2(128, 384, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymgjg"]
 atlas = ExtResource("2_5vdto")
@@ -45,6 +65,26 @@ region = Rect2(160, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vff81"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55atp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs77o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g42wp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt8w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8h56")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ymgjg")
@@ -99,7 +139,7 @@ script = ExtResource("1_5v0jf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vff81")
-animation = &"Idle"
+animation = &"Death"
 offset = Vector2(0, 3)
 
 [node name="detector" type="Area2D" parent="."]
@@ -116,4 +156,3 @@ position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_04jut")
 
 [connection signal="body_entered" from="detector" to="." method="_on_detector_body_entered"]
-[connection signal="body_exited" from="detector" to="." method="_on_detector_body_exited"]

@@ -479,7 +479,10 @@ sources/8 = SubResource("TileSetAtlasSource_xcktw")
 y_sort_enabled = true
 
 [node name="enemy" parent="." instance=ExtResource("11_iep8j")]
-position = Vector2(708, 305)
+position = Vector2(616, 301)
+
+[node name="enemy2" parent="." instance=ExtResource("11_iep8j")]
+position = Vector2(278, 322)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -514,4 +517,5 @@ polygon = PackedVector2Array(837, 481, 840, 438, 924, 437, 925, 482, 1047, 484, 
 polygon = PackedVector2Array(3, 656, 1148, 655, 1151, 4, -1, 1, 0, 650, -55, 620, -84, -53, 998, -45, 1213, -26, 1217, 686, -6, 688)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="collision"]
-polygon = PackedVector2Array(0, 173, 237, 170, 236, 2, 1, 1)
+position = Vector2(-2, -1)
+polygon = PackedVector2Array(0, 173, 237, 170, 236, 2, 1, 1, 0.956425, 8.4949)
