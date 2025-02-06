@@ -479,10 +479,7 @@ sources/8 = SubResource("TileSetAtlasSource_xcktw")
 y_sort_enabled = true
 
 [node name="enemy" parent="." instance=ExtResource("11_iep8j")]
-position = Vector2(616, 301)
-
-[node name="enemy2" parent="." instance=ExtResource("11_iep8j")]
-position = Vector2(278, 322)
+position = Vector2(742, 310)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -501,20 +498,13 @@ layer_3/tile_data = PackedInt32Array(852011, 655366, 7, 2228283, 6, 1, 2293824, 
 [node name="player" parent="." instance=ExtResource("1_cbbl7")]
 position = Vector2(583, 293)
 
-[node name="Camera2D" type="Camera2D" parent="player"]
-zoom = Vector2(2.5, 2.5)
-limit_left = 0
-limit_top = 0
-limit_right = 1150
-limit_bottom = 650
-
 [node name="collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collision"]
 polygon = PackedVector2Array(837, 481, 840, 438, 924, 437, 925, 482, 1047, 484, 1052, 493, 1054, 638, 1051, 652, 724, 652, 724, 530, 728, 485)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="collision"]
-polygon = PackedVector2Array(3, 656, 1148, 655, 1151, 4, -1, 1, 0, 650, -55, 620, -84, -53, 998, -45, 1213, -26, 1217, 686, -6, 688)
+polygon = PackedVector2Array(3, 656, 1148, 655, 1146, 8, -3, 10, 0, 650, -55, 620, -84, -53, 998, -45, 1213, -26, 1217, 686, -6, 688)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="collision"]
 position = Vector2(-2, -1)

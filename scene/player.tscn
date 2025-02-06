@@ -1,7 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://k8ldx8akthj3"]
+[gd_scene load_steps=61 format=3 uid="uid://k8ldx8akthj3"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_k82lv"]
 [ext_resource type="Texture2D" uid="uid://ykskkmi4457d" path="res://player.png" id="2_qqqae"]
+[ext_resource type="Script" path="res://script/camera_2d.gd" id="3_o3u2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouoto"]
 atlas = ExtResource("2_qqqae")
@@ -657,7 +658,7 @@ script = ExtResource("1_k82lv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_qg6pd")
-animation = &"Attack_front"
+animation = &"Attack_down"
 autoplay = "Idle_down"
 frame = 1
 
@@ -679,6 +680,15 @@ position = Vector2(1, 24)
 shape = SubResource("CircleShape2D_8h1xe")
 disabled = true
 one_way_collision_margin = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1150
+limit_bottom = 650
+position_smoothing_enabled = true
+script = ExtResource("3_o3u2o")
 
 [connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="hit_box" to="." method="_on_hit_box_body_exited"]

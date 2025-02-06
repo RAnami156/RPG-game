@@ -143,7 +143,6 @@ animation = &"Death"
 offset = Vector2(0, 3)
 
 [node name="detector" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -156,3 +155,4 @@ position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_04jut")
 
 [connection signal="body_entered" from="detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="detector" to="." method="_on_detector_body_exited"]
