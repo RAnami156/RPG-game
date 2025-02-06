@@ -12,8 +12,10 @@ enum {
 var speed = 100
 var idle_dir = DOWN
 var can_move = true
+var enemy = false
 
 func _physics_process(delta: float) -> void:
+	#print(enemy)
 	if !can_move:
 		return
 	
@@ -94,3 +96,13 @@ func attack():
 				
 	await anim.animation_finished
 	can_move = true
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body.name == "enemy":
+		enemy = true
+
+
+func _on_hit_box_body_exited(body: Node2D) -> void:
+	if body.name == "enemy":
+		enemy = false
