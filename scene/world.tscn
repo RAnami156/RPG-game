@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=28 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" path="res://scene/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
+[ext_resource type="Script" path="res://scene/world.gd" id="1_r0re5"]
 [ext_resource type="Texture2D" uid="uid://c57mgg1wfy2yy" path="res://romario-tileMap/decor_16x16.png" id="2_8gcjo"]
 [ext_resource type="Texture2D" uid="uid://fehkcqkelnr8" path="res://romario-tileMap/Fences.png" id="3_60pg8"]
 [ext_resource type="Texture2D" uid="uid://ce67cwnhbw0x3" path="res://romario-tileMap/grass.png" id="4_medsf"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://chwpdk8sg43s3" path="res://romario-tileMap/Outdoor_Decor_Free.png" id="9_frmjk"]
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="10_wigkg"]
 [ext_resource type="PackedScene" uid="uid://c537x7b50acea" path="res://scene/enemy.tscn" id="11_iep8j"]
+[ext_resource type="Texture2D" uid="uid://bmyka8ibuyokf" path="res://circle.png" id="14_2p3rq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgnw5"]
 texture = ExtResource("2_8gcjo")
@@ -476,8 +478,108 @@ sources/6 = SubResource("TileSetAtlasSource_e8s0r")
 sources/7 = SubResource("TileSetAtlasSource_8k74b")
 sources/8 = SubResource("TileSetAtlasSource_xcktw")
 
+[sub_resource type="Animation" id="Animation_w1sox"]
+resource_name = "day-night"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10.0333, 15, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.8, 0.8, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"day_plus"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/days:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 3.93333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:texture_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5, 9.1, 15, 18.9333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.01, 0.01, 1.0, 1.0, 0.01]
+}
+
+[sub_resource type="Animation" id="Animation_6yuq8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/days:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7uwfq"]
+_data = {
+"RESET": SubResource("Animation_6yuq8"),
+"day-night": SubResource("Animation_w1sox")
+}
+
 [node name="world" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_r0re5")
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -522,3 +624,35 @@ polygon = PackedVector2Array(3, 656, 1148, 655, 1146, 8, -3, 10, 0, 650, -55, 62
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="collision"]
 position = Vector2(-2, -1)
 polygon = PackedVector2Array(0, 173, 237, 170, 236, 2, 1, 1, 0.956425, 8.4949)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7uwfq")
+}
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.0
+blend_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="days" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 462.0
+offset_top = 8.0
+offset_right = 752.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 100
+text = "0 DAY"
+
+[node name="time" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(665, 239)
+scale = Vector2(0.1825, 0.183879)
+color = Color(0.996078, 0.682353, 0.203922, 1)
+texture = ExtResource("14_2p3rq")
+texture_scale = 0.01
