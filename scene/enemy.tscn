@@ -1,7 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://c537x7b50acea"]
+[gd_scene load_steps=38 format=3 uid="uid://c537x7b50acea"]
 
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_5v0jf"]
 [ext_resource type="Texture2D" uid="uid://1in8w1eifrq2" path="res://slime.png" id="2_5vdto"]
+[ext_resource type="Texture2D" uid="uid://y6yam33i5s5i" path="res://hp-bar/Sprite-0003.png" id="3_8qqhw"]
+[ext_resource type="Texture2D" uid="uid://b0qbf6aqbxoqd" path="res://hp-bar/Sprite-0002 (1).png" id="4_3s0dt"]
 
 [sub_resource type="Animation" id="Animation_0jsx4"]
 length = 2.6
@@ -81,6 +83,18 @@ tracks/5/keys = {
 "args": [],
 "method": &"shaking_false"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hp-bar:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.766667, 0.8, 1, 1.03333, 1.2, 2.35824),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-12, -10), Vector2(-12, -10), Vector2(-12, -28), Vector2(-12, -33), Vector2(-12, -35), Vector2(-12, -28), Vector2(-12, -28), Vector2(-12, -9), Vector2(-12, -10), Vector2(-12, -10)]
 }
 
 [sub_resource type="Animation" id="Animation_yfxlo"]
@@ -222,6 +236,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hp-bar:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, -10)]
 }
 
 [sub_resource type="Animation" id="Animation_v2vdu"]
@@ -524,6 +550,18 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage-zone"]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_4nrhb")
+
+[node name="hp-bar" type="TextureProgressBar" parent="."]
+z_index = 1
+offset_left = -12.0
+offset_top = -10.0
+offset_right = 11.0
+offset_bottom = -2.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_8qqhw")
+texture_progress = ExtResource("4_3s0dt")
+tint_progress = Color(1, 0, 0, 0.670588)
 
 [connection signal="body_entered" from="detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="detector" to="." method="_on_detector_body_exited"]

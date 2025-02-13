@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var anim = $AnimatedSprite2D
 @onready var animP = $AnimationPlayer
+@onready var hp_bar = $"hp-bar"
 var speed = 50
 var player = null
 var can_move = true
@@ -9,7 +10,10 @@ var death = false
 var player_in = false
 
 func _physics_process(delta: float) -> void:
+	hp_bar.value = Global.enemy_health
+	
 	if Global.enemy_health <= 0:
+		hp_bar.visible = false
 		death = true
 		die()
 		return
