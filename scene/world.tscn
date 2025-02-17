@@ -1,8 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=28 format=3 uid="uid://dlp53ho73vyts"]
 
-[ext_resource type="Script" path="res://scene/label.gd" id="1_1s8af"]
+[ext_resource type="Script" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
-[ext_resource type="Script" path="res://scene/world.gd" id="1_r0re5"]
+[ext_resource type="Script" path="res://script/world.gd" id="1_r0re5"]
 [ext_resource type="Texture2D" uid="uid://c57mgg1wfy2yy" path="res://romario-tileMap/decor_16x16.png" id="2_8gcjo"]
 [ext_resource type="Texture2D" uid="uid://fehkcqkelnr8" path="res://romario-tileMap/Fences.png" id="3_60pg8"]
 [ext_resource type="Texture2D" uid="uid://ce67cwnhbw0x3" path="res://romario-tileMap/grass.png" id="4_medsf"]
@@ -14,9 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="10_wigkg"]
 [ext_resource type="PackedScene" uid="uid://c537x7b50acea" path="res://scene/enemy.tscn" id="11_iep8j"]
 [ext_resource type="Texture2D" uid="uid://bmyka8ibuyokf" path="res://circle.png" id="14_2p3rq"]
-[ext_resource type="Texture2D" uid="uid://y6yam33i5s5i" path="res://hp-bar/Sprite-0003.png" id="14_ey1x2"]
-[ext_resource type="Texture2D" uid="uid://cwo25sgp2lxxm" path="res://hp-bar/Sprite-0001.png" id="15_1pexu"]
-[ext_resource type="Texture2D" uid="uid://b0qbf6aqbxoqd" path="res://hp-bar/Sprite-0002 (1).png" id="16_xj4s8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgnw5"]
 texture = ExtResource("2_8gcjo")
@@ -672,28 +669,16 @@ offset_right = 752.0
 offset_bottom = 145.0
 theme_override_font_sizes/font_size = 100
 text = "0 DAY"
+metadata/_edit_use_anchors_ = true
 
 [node name="time" type="Label" parent="CanvasLayer"]
-offset_left = 6.0
-offset_top = 27.0
-offset_right = 80.0
-offset_bottom = 69.0
+offset_left = 3.0
+offset_top = 35.0
+offset_right = 77.0
+offset_bottom = 77.0
 theme_override_font_sizes/font_size = 30
 text = "time:"
-
-[node name="hp-bar" type="TextureProgressBar" parent="CanvasLayer"]
-z_index = 1
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 108.0
-offset_bottom = 27.0
-value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("14_ey1x2")
-texture_over = ExtResource("15_1pexu")
-texture_progress = ExtResource("16_xj4s8")
-tint_over = Color(0.709873, 0.535454, 7.70092e-07, 1)
-tint_progress = Color(1, 0, 0, 0.768627)
+metadata/_edit_use_anchors_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(665, 239)

@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D
 @onready var animP = $AnimationPlayer
 @onready var hp_bar = $"hp-bar"
+@onready var anim_damage = $Node2D/AnimaDamage
+@onready var hp_damage = $Node2D/hp
 var speed = 50
 var player = null
 var can_move = true
@@ -10,14 +12,24 @@ var death = false
 var player_in = false
 
 func _physics_process(delta: float) -> void:
+	hp_damage.visible = false
 	hp_bar.value = Global.enemy_health
-	
+	if Global.enemy_health == 100:
+		hp_bar.visible = false
+	else: 
+		hp_bar.visible = true
+		
 	if Global.enemy_health <= 0:
 		hp_bar.visible = false
 		death = true
 		die()
 		return
-
+	
+	if Global.take_damage == true:
+		hp_damage.visible = true
+		anim_damage.play("hp_minus")
+		hp_damage.text = "-" + str(Global.damage_to_display)
+		
 	if death:
 		animP.stop()
 		
@@ -40,6 +52,7 @@ func die():
 	animP.play("Death")
 	await animP.animation_finished
 	queue_free()  
+	
 
 func _on_detector_body_entered(body: Node2D) -> void:
 	if body.name == "player":

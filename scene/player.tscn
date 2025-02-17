@@ -1,8 +1,13 @@
-[gd_scene load_steps=72 format=3 uid="uid://k8ldx8akthj3"]
+[gd_scene load_steps=77 format=3 uid="uid://k8ldx8akthj3"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_k82lv"]
 [ext_resource type="Texture2D" uid="uid://ykskkmi4457d" path="res://player.png" id="2_qqqae"]
 [ext_resource type="Script" path="res://script/camera_2d.gd" id="3_o3u2o"]
+[ext_resource type="Texture2D" uid="uid://y6yam33i5s5i" path="res://hp-bar/Sprite-0003.png" id="4_u7tnt"]
+[ext_resource type="Texture2D" uid="uid://cwo25sgp2lxxm" path="res://hp-bar/Sprite-0001.png" id="5_ceb0v"]
+[ext_resource type="Texture2D" uid="uid://b0qbf6aqbxoqd" path="res://hp-bar/Sprite-0002 (1).png" id="6_oaspm"]
+[ext_resource type="Texture2D" uid="uid://m38t1swcy346" path="res://stamina-bar/stamina 1.png" id="7_10fbw"]
+[ext_resource type="Texture2D" uid="uid://d7thnio0irfs" path="res://stamina-bar/stamina 2.png" id="8_g64kx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouoto"]
 atlas = ExtResource("2_qqqae")
@@ -914,7 +919,7 @@ script = ExtResource("1_k82lv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_qg6pd")
-animation = &"Attack_up"
+animation = &"Attack_front"
 autoplay = "Idle_down"
 frame = 1
 
@@ -945,6 +950,56 @@ limit_right = 1150
 limit_bottom = 650
 position_smoothing_enabled = true
 script = ExtResource("3_o3u2o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="hp-bar" type="TextureProgressBar" parent="CanvasLayer"]
+z_index = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 108.0
+offset_bottom = 27.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_u7tnt")
+texture_over = ExtResource("5_ceb0v")
+texture_progress = ExtResource("6_oaspm")
+tint_over = Color(0.709873, 0.535454, 7.70092e-07, 1)
+tint_progress = Color(1, 0, 0, 0.768627)
+metadata/_edit_use_anchors_ = true
+
+[node name="stamina" type="TextureProgressBar" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = -1
+anchor_left = -0.047619
+anchor_top = 1.16667
+anchor_right = -0.047619
+anchor_bottom = 1.16667
+offset_left = 55.8571
+offset_top = -732.0
+offset_right = 160.857
+offset_bottom = -708.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_10fbw")
+texture_progress = ExtResource("8_g64kx")
+tint_over = Color(0.709873, 0.535454, 7.70092e-07, 1)
+tint_progress = Color(0, 0.0833333, 1, 0.768627)
+metadata/_edit_use_anchors_ = true
+
+[node name="speed" type="Label" parent="CanvasLayer"]
+offset_left = 1122.0
+offset_top = 607.0
+offset_right = 1162.0
+offset_bottom = 630.0
+text = "100"
+
+[node name="stanima-text" type="Label" parent="CanvasLayer"]
+offset_left = 1122.0
+offset_top = 624.0
+offset_right = 1162.0
+offset_bottom = 647.0
+text = "100"
 
 [connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="hit_box" to="." method="_on_hit_box_body_exited"]
