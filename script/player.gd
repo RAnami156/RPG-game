@@ -12,20 +12,31 @@ enum {
 @onready var hp_bar = $"CanvasLayer/hp-bar"
 @onready var stamina_bar = $CanvasLayer/stamina
 
-var speed = 100
 var idle_dir = DOWN
 var can_move = true
 var crit_chance = 0.15
 
+var speed = 100
 var stamina = 100  
 var max_stamina = 100
 var stamina_minus = 30  
 var stamina_regen = 10  
 
+var heal_amount = 2        # Количество восстанавливаемого HP за тик
+var heal_interval = 1      # Интервал между хилом (в секундах)
+var max_health = 100       # Максимальное здоровье
+var is_healing = false     # Флаг, чтобы не запустить хил дважды
+#
+#func _ready() -> void:
+	#await healing()
 
 func _physics_process(delta: float) -> void:
 	$CanvasLayer/speed.text = str(speed)
 	$"CanvasLayer/stanima-text".text = str(stamina)
+	
+	run(delta)
+	await healing()
+	
 	stamina_bar.value = stamina
 	hp_bar.value = Global.player_healht
 	if Global.player_healht <= 0:
@@ -34,11 +45,14 @@ func _physics_process(delta: float) -> void:
 		await animP.animation_finished
 		self.queue_free()
 		Global.end = true
-	
+		
+	if is_healing == true:
+		$Health_plus.visible = true
+	else:
+		$Health_plus.visible = false
+		
 	if !can_move:
 		return
-	
-	run(delta)  # Передаём delta для работы со стаминой
 	
 	if Input.is_action_just_pressed("attack"):
 		attack()
@@ -69,6 +83,22 @@ func run(delta):
 		if stamina >= max_stamina:
 			stamina = max_stamina
 			
+
+func healing():
+	if is_healing:
+		return  # Уже хилится, не запускаем заново
+	is_healing = true
+	
+	while Global.player_healht < max_health:
+		animP.play("health")
+		await get_tree().create_timer(heal_interval).timeout
+		Global.player_healht += heal_amount
+		print(Global.player_healht)
+		if Global.player_healht > max_health:
+			Global.player_healht = max_health
+		hp_bar.value = Global.player_healht
+	
+	is_healing = false  # Останавливаем, когда HP полное
 
 func up_move():
 	anim.play("Up")
