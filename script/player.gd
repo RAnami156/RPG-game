@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 
 func run(delta):
 	if Input.is_action_pressed("run") and stamina > 0:
-		speed = 200
+		speed = 150
 		stamina -= stamina_minus * delta
 		if stamina <= 0:
 			stamina = 0
@@ -175,4 +175,4 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		Global.damage_to_display = damage_to_display
 
 func _on_hit_box_body_exited(body: Node2D) -> void:
-	Global.take_damage = false
+	Global.take_damage = false	

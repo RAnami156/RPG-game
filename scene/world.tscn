@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=27 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://n2jm87pvxp40" path="res://romario-tileMap/objects.png" id="8_0rjel"]
 [ext_resource type="Texture2D" uid="uid://chwpdk8sg43s3" path="res://romario-tileMap/Outdoor_Decor_Free.png" id="9_frmjk"]
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="10_wigkg"]
-[ext_resource type="PackedScene" uid="uid://c537x7b50acea" path="res://scene/enemy.tscn" id="11_iep8j"]
 [ext_resource type="Texture2D" uid="uid://bmyka8ibuyokf" path="res://circle.png" id="14_2p3rq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3yv0"]
@@ -617,9 +616,6 @@ theme_override_font_sizes/font_size = 200
 text = "You Dead"
 script = ExtResource("1_1s8af")
 
-[node name="enemy" parent="." instance=ExtResource("11_iep8j")]
-position = Vector2(742, 310)
-
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_tsb0n")
@@ -686,3 +682,11 @@ scale = Vector2(0.1825, 0.183879)
 color = Color(0.996078, 0.682353, 0.203922, 1)
 texture = ExtResource("14_2p3rq")
 texture_scale = 0.01
+
+[node name="enemys" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="enemys"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="enemys/Timer" to="." method="_on_timer_timeout"]
