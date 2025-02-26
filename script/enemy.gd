@@ -10,22 +10,24 @@ var player = null
 var can_move = true
 var death = false
 var player_in = false
+var health = 100
+var show_damage = false
 
 func _physics_process(delta: float) -> void:
 	hp_damage.visible = false
-	hp_bar.value = Global.enemy_health
-	if Global.enemy_health == 100:
+	hp_bar.value = health
+	if health == 100:
 		hp_bar.visible = false
 	else: 
 		hp_bar.visible = true
 		
-	if Global.enemy_health <= 0:
+	if health <= 0:
 		hp_bar.visible = false
 		death = true
 		die()
 		return
 	
-	if Global.take_damage == true:
+	if show_damage == true:
 		hp_damage.visible = true
 		anim_damage.play("hp_minus")
 		hp_damage.text = "-" + str(Global.damage_to_display)
@@ -48,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 func die():
 	can_move = false
-	Global.enemy_health = 0  
+	health = 0  
 	animP.play("Death")
 	await animP.animation_finished
 	queue_free()  
@@ -91,6 +93,15 @@ func attack():
 		#Global.damage = false
 		can_move = true
 		
+func take_damage():
+	health -= Global.player_damage  # Уменьшаем здоровье на величину урона
+	print(health)
+	show_damage = true
+	await  get_tree().create_timer(1).timeout
+	show_damage = false
+	if health <= 0:
+		Global.slime_count -= 1
+	
 func  shaking_true():
 	Global.damage = true
 	

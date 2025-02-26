@@ -9,7 +9,8 @@ var time_count
 var slime_preload = preload("res://scene/enemy.tscn")
 
 func _process(delta: float) -> void:
-	if Global.player_healht <= 0 :
+	#slime_spawn()
+	if Global.player_healht <= 0:
 		animP.stop()
 	else:
 		animP.play("day-night")
@@ -32,10 +33,15 @@ func night():
 func morning():
 	time_count = "morning" 
 
-func _on_timer_timeout() -> void:
-	slime_spawn()
-	
 func slime_spawn():
-	var slime = slime_preload.instantiate()
-	slime.position = Vector2(randf_range(200, 400), randf_range(250, 375))
-	$enemys.add_child(slime)
+	if Global.slime_count >= 3:
+		print("Slime spawn limit reached")
+		return
+	
+	var spawn_amount = min(3 - Global.slime_count, 3)  # Чтобы не превысить лимит
+	for i in range(spawn_amount):
+		var slime = slime_preload.instantiate()
+		slime.position = Vector2(randf_range(0, 375), randf_range(200, 645))
+		$enemys.add_child(slime)
+		Global.slime_count += 1  # Увеличиваем счетчик слаймов
+		print("Slime spawned at:", slime.position)

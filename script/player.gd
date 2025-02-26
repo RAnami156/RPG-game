@@ -93,7 +93,7 @@ func healing():
 		animP.play("health")
 		await get_tree().create_timer(heal_interval).timeout
 		Global.player_healht += heal_amount
-		print(Global.player_healht)
+		#print(Global.player_healht)
 		if Global.player_healht > max_health:
 			Global.player_healht = max_health
 		hp_bar.value = Global.player_healht
@@ -157,17 +157,17 @@ func attack():
 	can_move = true
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body.name == "enemy":
+	if body.has_method("take_damage"):
 		var is_crit = randf() < crit_chance 
 		var original_damage = Global.player_damage  
 		
 		Global.player_damage *= 2 if is_crit else 1  
-		Global.enemy_health -= Global.player_damage
-		Global.take_damage = true
+		body.take_damage()
+		#Global.take_damage = true
 		
 		var damage_to_display = Global.player_damage
 		
-		print("enemy ", Global.enemy_health, " (Крит!)" if is_crit else "")
+		print("enemy -20 "," (Крит!)" if is_crit else "")
 		
 		await get_tree().process_frame 
 		Global.player_damage = original_damage  
@@ -175,4 +175,5 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		Global.damage_to_display = damage_to_display
 
 func _on_hit_box_body_exited(body: Node2D) -> void:
-	Global.take_damage = false	
+	pass
+	#Global.take_damage = false

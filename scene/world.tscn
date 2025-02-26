@@ -593,6 +593,20 @@ tracks/4/keys = {
 "method": &"morning"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"slime_spawn"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7uwfq"]
 _data = {
