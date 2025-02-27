@@ -42,11 +42,13 @@ func _physics_process(delta: float) -> void:
 		var dir = (player.position - position).normalized()
 		velocity = dir * speed
 		move_and_slide()
+		#Global.slime_positions = position
 		animP.play("Walk")
 		anim.flip_h = dir.x < 0
 	else:
 		velocity = Vector2.ZERO
 		anim.play("Idle")
+
 
 func die():
 	can_move = false

@@ -600,7 +600,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.133333),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -698,9 +698,3 @@ texture = ExtResource("14_2p3rq")
 texture_scale = 0.01
 
 [node name="enemys" type="Node2D" parent="."]
-
-[node name="Timer" type="Timer" parent="enemys"]
-wait_time = 5.0
-autostart = true
-
-[connection signal="timeout" from="enemys/Timer" to="." method="_on_timer_timeout"]

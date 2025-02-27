@@ -1,43 +1,40 @@
 extends CharacterBody2D
 
-enum {
-	DOWN,
-	UP,
-	LEFT,
-	RIGHT
-}
 
 @onready var anim = $AnimatedSprite2D
 @onready var animP = $AnimationPlayer
 @onready var hp_bar = $"CanvasLayer/hp-bar"
 @onready var stamina_bar = $CanvasLayer/stamina
 
-var idle_dir = DOWN
+
+enum Dir { DOWN, UP, LEFT, RIGHT }
+
+var idle_dir = Dir.DOWN
 var can_move = true
 var crit_chance = 0.15
 
-var speed = 100
-var stamina = 100  
+var speed = 100 
 var max_stamina = 100
 var stamina_minus = 30  
 var stamina_regen = 10  
 
-var heal_amount = 2        # Количество восстанавливаемого HP за тик
-var heal_interval = 1      # Интервал между хилом (в секундах)
-var max_health = 100       # Максимальное здоровье
-var is_healing = false     # Флаг, чтобы не запустить хил дважды
-#
-#func _ready() -> void:
-	#await healing()
+var heal_amount = 2        
+var heal_interval = 1      
+var max_health = 100       
+var is_healing = false     
+
+func _ready() -> void:
+	position = Global.player_position
 
 func _physics_process(delta: float) -> void:
+	#print(position)
 	$CanvasLayer/speed.text = str(speed)
-	$"CanvasLayer/stanima-text".text = str(stamina)
+	$"CanvasLayer/stanima-text".text = str(Global.stamina)
 	
 	run(delta)
 	await healing()
 	
-	stamina_bar.value = stamina
+	stamina_bar.value = Global.stamina
 	hp_bar.value = Global.player_healht
 	if Global.player_healht <= 0:
 		Global.player_healht = 0
@@ -68,25 +65,26 @@ func _physics_process(delta: float) -> void:
 		idle()
 		
 	move_and_slide()
+	Global.player_position = position
 
 func run(delta):
-	if Input.is_action_pressed("run") and stamina > 0:
+	if Input.is_action_pressed("run") and Global.stamina > 0:
 		speed = 150
-		stamina -= stamina_minus * delta
-		if stamina <= 0:
-			stamina = 0
+		Global.stamina -= stamina_minus * delta
+		if Global.stamina <= 0:	
+			Global.stamina = 0
 			speed = 100 
 			
 	else:
 		speed = 100
-		stamina += stamina_regen * delta
-		if stamina >= max_stamina:
-			stamina = max_stamina
+		Global.stamina += stamina_regen * delta
+		if Global.stamina >= max_stamina:
+			Global.stamina = max_stamina
 			
 
 func healing():
 	if is_healing:
-		return  # Уже хилится, не запускаем заново
+		return 
 	is_healing = true
 	
 	while Global.player_healht < max_health:
@@ -103,37 +101,37 @@ func healing():
 func up_move():
 	anim.play("Up")
 	velocity = Vector2(0, -speed)
-	idle_dir = UP
+	idle_dir = Dir.UP
 	
 func down_move():
 	anim.play("Down")
 	velocity = Vector2(0, speed)
-	idle_dir = DOWN
+	idle_dir = Dir.DOWN
 	
 func left_move():
 	anim.flip_h = true
 	anim.play("Front")
 	velocity = Vector2(-speed, 0)
-	idle_dir = LEFT
+	idle_dir = Dir.LEFT
 	
 func right_move():
 	anim.flip_h = false
 	anim.play("Front")
 	velocity = Vector2(speed, 0)
-	idle_dir = RIGHT
+	idle_dir = Dir.RIGHT
 	
 func idle():
 	velocity = Vector2.ZERO
 	if velocity == Vector2.ZERO:
 		match idle_dir:
-			DOWN:
+			Dir.DOWN:
 				anim.play("Idle_down")
-			UP:
+			Dir.UP:
 				anim.play("Idle_up")
-			LEFT:
+			Dir.LEFT:
 				anim.flip_h = true
 				anim.play("Idle_front")
-			RIGHT:
+			Dir.RIGHT:
 				anim.flip_h = false
 				anim.play("Idle_front")
 				
@@ -142,14 +140,14 @@ func attack():
 	can_move = false
 	if velocity == Vector2.ZERO:
 		match idle_dir:
-			DOWN:
+			Dir.DOWN:
 				animP.play("Attack_down")
-			UP:
+			Dir.UP:
 				animP.play("Attack_up")
-			LEFT:
+			Dir.LEFT:
 				anim.flip_h = true
 				animP.play("attack_left")
-			RIGHT:
+			Dir.RIGHT:
 				anim.flip_h = false
 				animP.play("Attack_right")
 				
@@ -163,7 +161,6 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		
 		Global.player_damage *= 2 if is_crit else 1  
 		body.take_damage()
-		#Global.take_damage = true
 		
 		var damage_to_display = Global.player_damage
 		
@@ -176,4 +173,3 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 
 func _on_hit_box_body_exited(body: Node2D) -> void:
 	pass
-	#Global.take_damage = false

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0qbf6aqbxoqd" path="res://hp-bar/Sprite-0002 (1).png" id="6_oaspm"]
 [ext_resource type="Texture2D" uid="uid://m38t1swcy346" path="res://stamina-bar/stamina 1.png" id="7_10fbw"]
 [ext_resource type="Texture2D" uid="uid://d7thnio0irfs" path="res://stamina-bar/stamina 2.png" id="8_g64kx"]
-[ext_resource type="Script" path="res://scene/menu_button.gd" id="9_qrtke"]
+[ext_resource type="Script" path="res://script/menu_button.gd" id="9_qrtke"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouoto"]
 atlas = ExtResource("2_qqqae")
