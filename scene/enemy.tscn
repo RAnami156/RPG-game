@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://c537x7b50acea"]
 
-[ext_resource type="Script" path="res://script/enemy.gd" id="1_5v0jf"]
+[ext_resource type="Script" uid="uid://dda3oxrxscvmk" path="res://script/enemy.gd" id="1_5v0jf"]
 [ext_resource type="Texture2D" uid="uid://1in8w1eifrq2" path="res://slime.png" id="2_5vdto"]
 [ext_resource type="Texture2D" uid="uid://y6yam33i5s5i" path="res://hp-bar/Sprite-0003.png" id="3_8qqhw"]
 [ext_resource type="Texture2D" uid="uid://b0qbf6aqbxoqd" path="res://hp-bar/Sprite-0002 (1).png" id="4_3s0dt"]
@@ -316,11 +316,11 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c5u1v"]
 _data = {
-"Attack": SubResource("Animation_0jsx4"),
-"Death": SubResource("Animation_yfxlo"),
-"Idle": SubResource("Animation_4jugt"),
-"RESET": SubResource("Animation_1pqc5"),
-"Walk": SubResource("Animation_v2vdu")
+&"Attack": SubResource("Animation_0jsx4"),
+&"Death": SubResource("Animation_yfxlo"),
+&"Idle": SubResource("Animation_4jugt"),
+&"RESET": SubResource("Animation_1pqc5"),
+&"Walk": SubResource("Animation_v2vdu")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1y3w"]
@@ -573,8 +573,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d74g0"]
 _data = {
-"RESET": SubResource("Animation_0ail4"),
-"hp_minus": SubResource("Animation_1wx00")
+&"RESET": SubResource("Animation_0ail4"),
+&"hp_minus": SubResource("Animation_1wx00")
 }
 
 [node name="enemy" type="CharacterBody2D"]
@@ -584,7 +584,7 @@ script = ExtResource("1_5v0jf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_c5u1v")
+&"": SubResource("AnimationLibrary_c5u1v")
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -640,7 +640,7 @@ scale = Vector2(0.2, 0.2)
 
 [node name="AnimaDamage" type="AnimationPlayer" parent="Node2D"]
 libraries = {
-"": SubResource("AnimationLibrary_d74g0")
+&"": SubResource("AnimationLibrary_d74g0")
 }
 
 [node name="hp" type="Label" parent="Node2D"]

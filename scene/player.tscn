@@ -1,14 +1,14 @@
 [gd_scene load_steps=79 format=3 uid="uid://k8ldx8akthj3"]
 
-[ext_resource type="Script" path="res://script/player.gd" id="1_k82lv"]
+[ext_resource type="Script" uid="uid://cnn02ivt0qp3h" path="res://script/player.gd" id="1_k82lv"]
 [ext_resource type="Texture2D" uid="uid://ykskkmi4457d" path="res://player.png" id="2_qqqae"]
-[ext_resource type="Script" path="res://script/camera_2d.gd" id="3_o3u2o"]
+[ext_resource type="Script" uid="uid://yd53idp50a0v" path="res://script/camera_2d.gd" id="3_o3u2o"]
 [ext_resource type="Texture2D" uid="uid://y6yam33i5s5i" path="res://hp-bar/Sprite-0003.png" id="4_u7tnt"]
 [ext_resource type="Texture2D" uid="uid://cwo25sgp2lxxm" path="res://hp-bar/Sprite-0001.png" id="5_ceb0v"]
 [ext_resource type="Texture2D" uid="uid://b0qbf6aqbxoqd" path="res://hp-bar/Sprite-0002 (1).png" id="6_oaspm"]
 [ext_resource type="Texture2D" uid="uid://m38t1swcy346" path="res://stamina-bar/stamina 1.png" id="7_10fbw"]
 [ext_resource type="Texture2D" uid="uid://d7thnio0irfs" path="res://stamina-bar/stamina 2.png" id="8_g64kx"]
-[ext_resource type="Script" path="res://script/menu_button.gd" id="9_qrtke"]
+[ext_resource type="Script" uid="uid://d2ruy2jtstp1x" path="res://script/menu_button.gd" id="9_qrtke"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouoto"]
 atlas = ExtResource("2_qqqae")
@@ -946,20 +946,20 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xpg4b"]
 _data = {
-"Attack_down": SubResource("Animation_tq7xx"),
-"Attack_front": SubResource("Animation_lpfca"),
-"Attack_right": SubResource("Animation_c4q0h"),
-"Attack_up": SubResource("Animation_0o0cg"),
-"Death": SubResource("Animation_ffaga"),
-"Down": SubResource("Animation_rdxsp"),
-"Front": SubResource("Animation_vhwol"),
-"Idle_down": SubResource("Animation_kimq8"),
-"Idle_front": SubResource("Animation_r6etf"),
-"Idle_up": SubResource("Animation_wf0jg"),
-"RESET": SubResource("Animation_2fcoh"),
-"Up": SubResource("Animation_mjxwn"),
-"attack_left": SubResource("Animation_yc73t"),
-"health": SubResource("Animation_w0l7j")
+&"Attack_down": SubResource("Animation_tq7xx"),
+&"Attack_front": SubResource("Animation_lpfca"),
+&"Attack_right": SubResource("Animation_c4q0h"),
+&"Attack_up": SubResource("Animation_0o0cg"),
+&"Death": SubResource("Animation_ffaga"),
+&"Down": SubResource("Animation_rdxsp"),
+&"Front": SubResource("Animation_vhwol"),
+&"Idle_down": SubResource("Animation_kimq8"),
+&"Idle_front": SubResource("Animation_r6etf"),
+&"Idle_up": SubResource("Animation_wf0jg"),
+&"RESET": SubResource("Animation_2fcoh"),
+&"Up": SubResource("Animation_mjxwn"),
+&"attack_left": SubResource("Animation_yc73t"),
+&"health": SubResource("Animation_w0l7j")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8h1xe"]
@@ -983,7 +983,7 @@ shape = SubResource("CircleShape2D_wh8d4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xpg4b")
+&"": SubResource("AnimationLibrary_xpg4b")
 }
 
 [node name="hit_box" type="Area2D" parent="."]
