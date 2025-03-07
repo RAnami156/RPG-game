@@ -4,6 +4,10 @@ var player_healht = 100
 var player_damage = 20
 var player_position = Vector2(583,293)
 var stamina = 100
+
+#ANIMATION
+var animation_position = 0.0  # Добавлена переменная для хранения позиции анимации
+
 #SLIME
 var slime_data = [] # Массив словарей с данными слаймов: [{position: Vector2, health: float}, ...]
 var slime_count = 0
