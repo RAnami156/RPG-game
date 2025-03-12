@@ -1,8 +1,7 @@
-[gd_scene load_steps=79 format=3 uid="uid://k8ldx8akthj3"]
+[gd_scene load_steps=78 format=3 uid="uid://k8ldx8akthj3"]
 
 [ext_resource type="Script" uid="uid://cnn02ivt0qp3h" path="res://script/player.gd" id="1_k82lv"]
 [ext_resource type="Texture2D" uid="uid://ykskkmi4457d" path="res://player.png" id="2_qqqae"]
-[ext_resource type="Script" uid="uid://yd53idp50a0v" path="res://script/camera_2d.gd" id="3_o3u2o"]
 [ext_resource type="Texture2D" uid="uid://y6yam33i5s5i" path="res://hp-bar/Sprite-0003.png" id="4_u7tnt"]
 [ext_resource type="Texture2D" uid="uid://cwo25sgp2lxxm" path="res://hp-bar/Sprite-0001.png" id="5_ceb0v"]
 [ext_resource type="Texture2D" uid="uid://b0qbf6aqbxoqd" path="res://hp-bar/Sprite-0002 (1).png" id="6_oaspm"]
@@ -995,15 +994,6 @@ position = Vector2(1, 24)
 shape = SubResource("CircleShape2D_8h1xe")
 disabled = true
 one_way_collision_margin = 0.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
-limit_left = 0
-limit_top = 0
-limit_right = 1150
-limit_bottom = 650
-position_smoothing_enabled = true
-script = ExtResource("3_o3u2o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

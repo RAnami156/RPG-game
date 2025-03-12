@@ -11,7 +11,9 @@ var animation_position = 0.0  # Добавлена переменная для �
 #SLIME
 var slime_data = [] # Массив словарей с данными слаймов: [{position: Vector2, health: float}, ...]
 var slime_count = 0
+
+var time_count = "day"
 var damage = false
 var damage_to_display = 0
-var days_count = -1
+var days_count = 0
 var end = false

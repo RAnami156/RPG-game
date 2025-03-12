@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=29 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" uid="uid://lv4uocwd1c1h" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://n2jm87pvxp40" path="res://romario-tileMap/objects.png" id="8_0rjel"]
 [ext_resource type="Texture2D" uid="uid://chwpdk8sg43s3" path="res://romario-tileMap/Outdoor_Decor_Free.png" id="9_frmjk"]
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="10_wigkg"]
+[ext_resource type="Script" uid="uid://yd53idp50a0v" path="res://script/camera_2d.gd" id="13_bqa5m"]
 [ext_resource type="Texture2D" uid="uid://bmyka8ibuyokf" path="res://circle.png" id="14_2p3rq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3yv0"]
@@ -532,51 +533,37 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 0.0, 0.8, 0.8, 0.0]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath(".")
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/days:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.733333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"day_plus"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/days:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3, 3.93333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PointLight2D:texture_scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 5, 9.1, 15, 18.9333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.01, 0.01, 1.0, 1.0, 0.01]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.0333333, 6.6, 10.1667, 15.7333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
@@ -593,13 +580,13 @@ tracks/4/keys = {
 "method": &"morning"
 }]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(10.1333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -613,6 +600,9 @@ _data = {
 &"RESET": SubResource("Animation_6yuq8"),
 &"day-night": SubResource("Animation_w1sox")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f345f"]
+radius = 27.074
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
@@ -645,7 +635,16 @@ layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(852011, 655366, 7, 2228283, 6, 1, 2293824, 6, 1, 2424893, 655366, 7, 2031670, 131080, 5, 2097206, 327688, 4, 2031671, 196616, 5, 2097207, 196616, 5, 2162739, 6, 1, 2424888, 65543, 5, 2162737, 7, 5, 2097214, 7, 3, 2293821, 65543, 2, 1966132, 65544, 4, 2031668, 65544, 5, 2097204, 65544, 6, 1966133, 131080, 4, 2031669, 131080, 5, 2097205, 131080, 6, 1966134, 131080, 4, 1966135, 196616, 4, 2162743, 196616, 6, 2162742, 65544, 6, 2293817, 65543, 9, 2424891, 65543, 9, 983072, 6, 0, 2424865, 6, 5, 2424870, 6, 5, 2424874, 6, 5, 2555933, 6, 0, 2293789, 524294, 6, 1376294, 524294, 6, 1507358, 6, 1, 2031654, 6, 1, 1769515, 6, 1, 1441826, 327686, 0, 1572901, 327686, 0, 1507372, 327686, 0, 1769520, 6, 0, 1703967, 393222, 7, 1507374, 655366, 7, 1900579, 524294, 6, 2359314, 6, 5, 2228236, 6, 5, 2359303, 6, 5, 2031617, 6, 5, 1966086, 6, 5, 1572872, 6, 5, 1179662, 6, 5, 1179655, 6, 5, 1507330, 6, 5, 1114114, 6, 5, 851974, 6, 5, 655373, 6, 5, 393242, 6, 5, 393222, 131077, 0, 458758, 131077, 1, 524294, 131077, 2, 393223, 196613, 0, 458759, 196613, 1, 524295, 7, 0, 262154, 65541, 2, 524288, 131077, 0, 589824, 131077, 1, 655360, 131077, 2, 524289, 196613, 0, 589825, 196613, 1, 655361, 196613, 2, 524292, 6, 1, 65537, 327686, 0, 262150, 327686, 0, 65548, 327686, 0, 393221, 7, 5, 65541, 7, 3, 524301, 131079, 3, 524297, 131079, 3, 458754, 7, 0, 262152, 7, 0, 65539, 65543, 0, 196621, 131079, 0, 589835, 131079, 0, 131126, 131077, 0, 196662, 131077, 1, 131127, 196613, 0, 196663, 196613, 1, 524347, 131077, 0, 589883, 131077, 1, 524348, 196613, 0, 589884, 196613, 1, 1048641, 131077, 0, 1114177, 131077, 1, 1048642, 196613, 0, 786501, 131077, 0, 852037, 131077, 1, 786502, 196613, 0, 852038, 196613, 1, 1507389, 131077, 0, 1572925, 131077, 1, 1507390, 196613, 0, 1572926, 196613, 1, 1572898, 7, 7, 917556, 65537, 0, 917557, 131073, 0, 917558, 131073, 0, 917559, 131073, 0, 917560, 131073, 0, 917561, 131073, 0, 917562, 131073, 0, 917563, 196609, 3, 852027, 1, 1, 786491, 1, 1, 720955, 196609, 1, 720954, 131073, 0, 720953, 131073, 0, 720952, 131073, 0, 720951, 131073, 0, 720950, 131073, 0, 720949, 131073, 0, 720948, 65537, 0, 917555, 196615, 0, 1048600, 655366, 7, 720921, 393222, 7, 2228247, 524294, 6, 1245206, 524294, 6, 65566, 524294, 6, 327714, 524294, 6, 327735, 524294, 6, 1835025, 524294, 6, 1507346, 655366, 7, 1638414, 393222, 7, 2162722, 131077, 0, 2228258, 131077, 1, 2293794, 131077, 2, 2162723, 196613, 0, 2228259, 196613, 1, 2293795, 196613, 2, 1572885, 131077, 0, 1638421, 131077, 1, 1703957, 131077, 2, 1572886, 196613, 0, 1638422, 196613, 1, 1966103, 7, 2, 2097167, 7, 7, 131115, 7, 7, 65572, 65543, 11, 65594, 65543, 11, 655381, 131077, 0, 720917, 131077, 1, 786453, 131077, 2, 655382, 196613, 0, 720918, 196613, 1, 786454, 196613, 2, 1048594, 524294, 6, 2031647, 655366, 7, 393226, 655366, 7, 196631, 524294, 6, 1048615, 655366, 0, 983081, 262151, 4, 917534, 4, 0, 852007, 4, 0, 262183, 4, 0, 2228292, 4, 0, 1835077, 4, 0, 1507395, 4, 0, 1179710, 4, 0, 1114178, 196613, 1, 1179717, 4, 0, 786494, 4, 0, 524355, 4, 0, 196676, 4, 0, 262206, 4, 0, 589872, 4, 0, 131122, 4, 0, 2359344, 6, 5, 1769526, 6, 5, 65545, 6, 5, 262146, 6, 5, 852003, 3, 0)
 
 [node name="player" parent="." instance=ExtResource("1_cbbl7")]
-position = Vector2(583, 293)
+position = Vector2(580, 290)
+
+[node name="Camera2D2" type="Camera2D" parent="player"]
+zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1150
+limit_bottom = 650
+position_smoothing_enabled = true
+script = ExtResource("13_bqa5m")
 
 [node name="collision" type="StaticBody2D" parent="."]
 
@@ -698,3 +697,26 @@ texture = ExtResource("14_2p3rq")
 texture_scale = 0.01
 
 [node name="enemys" type="Node2D" parent="."]
+
+[node name="house" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="house"]
+position = Vector2(554, 251)
+shape = SubResource("CircleShape2D_f345f")
+
+[node name="outside" type="Label" parent="."]
+z_index = 1
+offset_left = 507.0
+offset_top = 202.0
+offset_right = 1077.0
+offset_bottom = 353.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 50
+text = "Press 'E'
+ to get house."
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
+[connection signal="body_exited" from="house" to="." method="_on_house_body_exited"]
