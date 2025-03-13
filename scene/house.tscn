@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://mefmopbbwhge"]
+[gd_scene load_steps=19 format=3 uid="uid://mefmopbbwhge"]
 
 [ext_resource type="Texture2D" uid="uid://bpw68llbpnj7j" path="res://house/TopDownHouse_FloorsAndWalls.png" id="1_52fq0"]
-[ext_resource type="Script" uid="uid://3alqq1cjm10o" path="res://scene/house.gd" id="1_66jkb"]
+[ext_resource type="Script" uid="uid://3alqq1cjm10o" path="res://script/house.gd" id="1_66jkb"]
 [ext_resource type="Texture2D" uid="uid://ddbmhex5qqc8h" path="res://house/Black.png" id="1_qg36w"]
 [ext_resource type="Texture2D" uid="uid://bcrmtuyhg3kl" path="res://house/TopDownHouse_DoorsAndWindows.png" id="2_2813k"]
 [ext_resource type="Texture2D" uid="uid://dufvp30ypcxce" path="res://house/TopDownHouse_FurnitureState1.png" id="3_qg36w"]
@@ -952,6 +952,42 @@ sources/4 = SubResource("TileSetAtlasSource_2iacw")
 radius = 15.0
 height = 56.0
 
+[sub_resource type="Animation" id="Animation_66jkb"]
+resource_name = "day-night"
+length = 20.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7, 9.96667, 15.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"day"
+}, {
+"args": [],
+"method": &"evening"
+}, {
+"args": [],
+"method": &"night"
+}, {
+"args": [],
+"method": &"morning"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7cke"]
+_data = {
+&"day-night": SubResource("Animation_66jkb")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66jkb"]
+radius = 13.0
+height = 60.0
+
 [node name="house" type="Node2D"]
 script = ExtResource("1_66jkb")
 
@@ -991,7 +1027,7 @@ visible = false
 polygon = PackedVector2Array(3, 87, 6, 87, 20, 90, 22, 121, 19, 135, 18, 140, 5, 139, 2, 131, 2, 128, 0, 123, 1, 90)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(171, 87, 180, 87, 180, -2, -3, -3, -2, 89, 7, 87, 24, 90, 26, 91, 112, 91, 113, 33, 143, 34, 142, 77, 148, 76, 149, 88, 172, 88)
+polygon = PackedVector2Array(171, 87, 180, 87, 180, -2, -3, -3, -2, 89, 7, 87, 24, 90, 26, 91, 112, 91, 115, 80, 141, 80, 148, 79, 149, 88, 172, 88)
 
 [node name="outside" type="Label" parent="."]
 offset_left = 113.0
@@ -1004,5 +1040,62 @@ text = "Press 'E'
 to go outside."
 horizontal_alignment = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g7cke")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="days" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 395.0
+offset_top = 38.0
+offset_right = 685.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 100
+text = "0 DAY"
+metadata/_edit_use_anchors_ = true
+
+[node name="time" type="Label" parent="CanvasLayer"]
+offset_left = 3.0
+offset_top = 35.0
+offset_right = 77.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 30
+text = "time:"
+metadata/_edit_use_anchors_ = true
+
+[node name="sleep" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sleep"]
+position = Vector2(13, 113)
+shape = SubResource("CapsuleShape2D_66jkb")
+
+[node name="bed" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 95.0
+offset_right = 198.0
+offset_bottom = 236.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 50
+text = "Press 'E'
+to sleep"
+horizontal_alignment = 1
+
+[node name="dayss" type="Label" parent="."]
+offset_left = 119.0
+offset_top = 25.0
+offset_right = 286.0
+offset_bottom = 94.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 50
+text = "deys: 0"
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
+[connection signal="body_exited" from="sleep" to="." method="_on_sleep_body_exited"]

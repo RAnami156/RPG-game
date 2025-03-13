@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq0373yw7dnbc"]
+
+[ext_resource type="Script" uid="uid://blhug7cqs4sso" path="res://sleep.gd" id="1_q3t3q"]
+[ext_resource type="Texture2D" uid="uid://ckq32yijvhkta" path="res://house/skibidi.jpg" id="2_q3t3q"]
+
+[node name="sleep" type="Node2D"]
+script = ExtResource("1_q3t3q")
+
+[node name="Skibidi" type="Sprite2D" parent="."]
+position = Vector2(263, 215)
+scale = Vector2(0.380556, 0.380556)
+texture = ExtResource("2_q3t3q")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(261, 203)
+zoom = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 72.0
+offset_top = 181.0
+offset_right = 442.0
+offset_bottom = 234.0
+theme_override_font_sizes/font_size = 38
+text = "ТИХО УЗБЕКИ СПЯТ"
