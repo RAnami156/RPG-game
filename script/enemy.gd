@@ -12,12 +12,12 @@ var player_in = false
 var health = 100
 var show_damage = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	hp_damage.visible = false
 	hp_bar.value = health
 	if health == 100:
 		hp_bar.visible = false
-	else: 
+	else:
 		hp_bar.visible = true
 	
 	# Обновляем данные слайма в глобальном массиве
@@ -94,9 +94,8 @@ func _on_detector_body_exited(body: Node2D) -> void:
 		player = null
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.name == "player":
-		Global.player_healht -= 40
-		print("player ", Global.player_healht)
+	if body.has_method("take_damage") and body.name == "player":
+		body.take_damage(40)
 		
 func _on_damagezone_body_entered(body: Node2D) -> void:
 	if body.name == "player":
@@ -115,8 +114,8 @@ func attack():
 		await animP.animation_finished
 		can_move = true
 		
-func take_damage():
-	health -= Global.player_damage  # Уменьшаем здоровье на величину урона
+func take_damage(damage: float):
+	health -= damage
 	print(health)
 	show_damage = true
 	await get_tree().create_timer(1).timeout
