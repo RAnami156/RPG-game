@@ -964,10 +964,17 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8h1xe"]
 radius = 14.0357
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animation", "health_bar", "stamina_bar", "speed_label", "stamina_label", "heal_timer")]
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_k82lv")
+sprite = NodePath("AnimatedSprite2D")
+animation = NodePath("AnimationPlayer")
+health_bar = NodePath("CanvasLayer/hp-bar")
+stamina_bar = NodePath("CanvasLayer/stamina")
+speed_label = NodePath("CanvasLayer/speed")
+stamina_label = NodePath("CanvasLayer/stanima-text")
+heal_timer = NodePath("Timer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
@@ -1062,6 +1069,10 @@ offset_bottom = 50.0
 scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 50
 text = "+2"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 
 [connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="hit_box" to="." method="_on_hit_box_body_exited"]
