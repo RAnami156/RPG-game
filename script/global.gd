@@ -7,6 +7,7 @@ var stamina = 100
 
 #ANIMATION
 var animation_position = 0.0  # Добавлена переменная для хранения позиции анимации
+var resume = false
 
 #SLIME
 var slime_data = [] # Массив словарей с данными слаймов: [{position: Vector2, health: float}, ...]

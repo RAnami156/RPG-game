@@ -13,6 +13,7 @@ enum Dir { DOWN, UP, LEFT, RIGHT }
 var idle_dir = Dir.DOWN
 var can_move = true
 var crit_chance = 0.15
+var is_paused = false
 
 var speed = 100 
 var max_stamina = 100
@@ -22,13 +23,29 @@ var stamina_regen = 10
 var heal_amount = 2        
 var heal_interval = 1      
 var max_health = 100       
-var is_healing = false     
+var is_healing = false
 
 func _ready() -> void:
+	Engine.time_scale = 1
+	$CanvasLayer/pause.visible = false
 	position = Global.player_position
 
 func _physics_process(delta: float) -> void:
-	#print(position)
+	#print(Global.is_paused)
+	
+	if Input.is_action_just_pressed("pause"):
+		is_paused = !is_paused  # Переключаем паузу
+		Engine.time_scale = 0 if is_paused else 1
+		$CanvasLayer/pause.visible = is_paused
+		can_move = not is_paused
+	if Global.resume:
+		is_paused = false
+		can_move = true
+		$CanvasLayer/pause.visible = false  # Скрываем меню паузы
+		Engine.time_scale = 1  # Возвращаем нормальную скорость времени
+		Global.resume = false
+
+
 	$CanvasLayer/speed.text = str(speed)
 	$"CanvasLayer/stanima-text".text = str(Global.stamina)
 	text_slime_killed.text = "slime killed: " + str(Global.slime_killed)
@@ -67,6 +84,7 @@ func _physics_process(delta: float) -> void:
 		idle()
 		
 	move_and_slide()
+	#Global.is_paused = is_paused
 	Global.player_position = position
 
 func run(delta):

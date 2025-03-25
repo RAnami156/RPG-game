@@ -18,7 +18,7 @@ func _ready():
 	
 
 func _process(delta: float) -> void: 
-	print(Global.slime_killed)
+	#print(Global.slime_killed)
 	#print(Global.stamina)
 	#print(Global.days_count)
 	#print(Global.animation_position)
