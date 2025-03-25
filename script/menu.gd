@@ -6,7 +6,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("esc"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("enter"):
-		get_tree().change_scene_to_file("res://scene/world.tscn")
+		get_tree().change_scene_to_file(Global.current_scene)
 
 func _on_exit_pressed() -> void:
 
@@ -14,4 +14,4 @@ func _on_exit_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/world.tscn")
+	get_tree().change_scene_to_file(Global.current_scene)

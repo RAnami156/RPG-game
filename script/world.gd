@@ -18,6 +18,8 @@ func _ready():
 	
 
 func _process(delta: float) -> void: 
+	print(Global.slime_killed)
+	#print(Global.stamina)
 	#print(Global.days_count)
 	#print(Global.animation_position)
 	if Global.player_healht <= 0:
@@ -45,6 +47,7 @@ func _process(delta: float) -> void:
 		
 	if house and Input.is_action_just_pressed("E") :
 		get_tree().change_scene_to_file("res://scene/house.tscn")
+		Global.current_scene = "res://scene/house.tscn"
 		Global.player_position = Vector2(128,88)
 
  #DAYS
@@ -88,6 +91,8 @@ func load_slimes():
 		slime.health = slime_info.health  # Устанавливаем сохраненное здоровье
 		enemys.add_child(slime)
 		print("Loaded slime at:", slime.position, "with health:", slime.health)
+		if slime.health == 0:
+			Global.slime_killed += 1 
 
 
 func _on_house_body_entered(body: Node2D) -> void:

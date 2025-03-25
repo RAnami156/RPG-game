@@ -1013,7 +1013,7 @@ tint_progress = Color(1, 0, 0, 0.768627)
 metadata/_edit_use_anchors_ = true
 
 [node name="stamina" type="TextureProgressBar" parent="CanvasLayer"]
-z_index = 1
+z_index = 2
 anchors_preset = -1
 anchor_left = -0.047619
 anchor_top = 1.16667
@@ -1052,6 +1052,15 @@ offset_right = 634.0
 offset_bottom = 32.0
 text = "MENU"
 script = ExtResource("9_qrtke")
+
+[node name="slime_killed" type="Label" parent="CanvasLayer"]
+offset_left = 913.0
+offset_top = -3.0
+offset_right = 1607.0
+offset_bottom = 134.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 100
+text = "Slime Killed: 1 "
 
 [node name="Health_plus" type="Label" parent="."]
 modulate = Color(1, 0, 0, 1)

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var animP = $AnimationPlayer
 @onready var hp_bar = $"CanvasLayer/hp-bar"
 @onready var stamina_bar = $CanvasLayer/stamina
+@onready var text_slime_killed = $CanvasLayer/slime_killed
 
 
 enum Dir { DOWN, UP, LEFT, RIGHT }
@@ -30,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	#print(position)
 	$CanvasLayer/speed.text = str(speed)
 	$"CanvasLayer/stanima-text".text = str(Global.stamina)
+	text_slime_killed.text = "slime killed: " + str(Global.slime_killed)
 	
 	run(delta)
 	await healing()

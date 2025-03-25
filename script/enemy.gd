@@ -11,6 +11,7 @@ var death = false
 var player_in = false
 var health = 100
 var show_damage = false
+var already_dead = false
 
 func _physics_process(delta: float) -> void:
 	hp_damage.visible = false
@@ -23,11 +24,13 @@ func _physics_process(delta: float) -> void:
 	# Обновляем данные слайма в глобальном массиве
 	update_slime_data()
 		
-	if health <= 0:
+	if health <= 0 and not already_dead:
+		already_dead = true  # Отмечаем, что смерть уже обработана
 		hp_bar.visible = false
 		death = true
+		Global.slime_killed += 1  # Теперь это выполнится только один раз
 		die()
-		return
+		return 
 	
 	if show_damage == true:
 		hp_damage.visible = true
@@ -72,6 +75,7 @@ func update_slime_data():
 func die():
 	can_move = false
 	health = 0
+	set_physics_process(false)
 	# Удаляем данные о слайме
 	remove_slime_data()
 	animP.play("Death")

@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 		$outside.visible = false
 	if ouside  and Input.is_action_just_pressed("E"):
 		get_tree().change_scene_to_file("res://scene/world.tscn")
+		Global.current_scene = "res://scene/world.tscn"
 		Global.player_position = Vector2(555,261)
 		
 	#SLEEP AND BED

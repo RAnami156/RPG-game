@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=31 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" uid="uid://lv4uocwd1c1h" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="10_wigkg"]
 [ext_resource type="Script" uid="uid://yd53idp50a0v" path="res://script/camera_2d.gd" id="13_bqa5m"]
 [ext_resource type="Texture2D" uid="uid://bmyka8ibuyokf" path="res://circle.png" id="14_2p3rq"]
+[ext_resource type="Script" uid="uid://bxf1sj8guyo42" path="res://scene/area_2d.gd" id="15_a0bac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3yv0"]
 texture = ExtResource("2_8gcjo")
@@ -604,6 +605,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_f345f"]
 radius = 27.074
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tmyho"]
+radius = 22.0
+height = 80.0
+
 [node name="world" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_r0re5")
@@ -655,7 +660,7 @@ polygon = PackedVector2Array(837, 481, 840, 438, 924, 437, 925, 482, 1047, 484, 
 polygon = PackedVector2Array(3, 656, 1148, 655, 1146, 8, -3, 10, 0, 650, -55, 620, -84, -53, 998, -45, 1213, -26, 1217, 686, -6, 688)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="collision"]
-position = Vector2(-2, -1)
+position = Vector2(-1, 0)
 polygon = PackedVector2Array(0, 173, 237, 170, 236, 2, 1, 1, 0.956425, 8.4949)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -682,9 +687,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="time" type="Label" parent="CanvasLayer"]
 offset_left = 3.0
-offset_top = 35.0
+offset_top = 39.0
 offset_right = 77.0
-offset_bottom = 77.0
+offset_bottom = 81.0
 theme_override_font_sizes/font_size = 30
 text = "time:"
 metadata/_edit_use_anchors_ = true
@@ -718,5 +723,25 @@ text = "Press 'E'
  to get house."
 horizontal_alignment = 1
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("15_a0bac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(439, 674)
+shape = SubResource("CapsuleShape2D_tmyho")
+
+[node name="Label" type="Label" parent="Area2D"]
+offset_left = 433.0
+offset_top = 617.0
+offset_right = 1828.0
+offset_bottom = 754.0
+scale = Vector2(0.055, 0.055)
+theme_override_font_sizes/font_size = 100
+text = "Kill 10 slides to fight the boss"
+
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="body_exited" from="house" to="." method="_on_house_body_exited"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
