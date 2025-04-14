@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dloox04mrs508"]
 
-[ext_resource type="Script" uid="uid://dwmcbaxjf38ya" path="res://scene/pause.gd" id="1_snhp4"]
+[ext_resource type="Script" uid="uid://dwmcbaxjf38ya" path="res://script/pause.gd" id="1_vj4lk"]
 
 [node name="pause" type="Control"]
 z_index = 2
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_snhp4")
+script = ExtResource("1_vj4lk")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -52,12 +52,28 @@ offset_right = 171.0
 offset_bottom = 107.0
 text = "Resume"
 
+[node name="save" type="Button" parent="Panel/VBoxContainer/Label"]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 171.0
+offset_bottom = 160.0
+text = "Save"
+
+[node name="load" type="Button" parent="Panel/VBoxContainer/Label"]
+layout_mode = 0
+offset_top = 174.0
+offset_right = 171.0
+offset_bottom = 214.0
+text = "Load"
+
 [node name="Menu" type="Button" parent="Panel/VBoxContainer/Label"]
 layout_mode = 0
-offset_top = 128.0
+offset_top = 227.0
 offset_right = 171.0
-offset_bottom = 168.0
+offset_bottom = 267.0
 text = "Menu"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Label/Resum" to="." method="_on_resum_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Label/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Label/load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Label/Menu" to="." method="_on_menu_pressed"]

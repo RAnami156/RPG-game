@@ -1,5 +1,7 @@
 extends Node2D
 
+func _ready() -> void:
+	Engine.time_scale = 1
 
 func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play("Idle_down")

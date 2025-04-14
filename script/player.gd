@@ -31,9 +31,11 @@ func _ready() -> void:
 	position = Global.player_position
 
 func _physics_process(delta: float) -> void:
-	#print(Global.is_paused)
+	print(Global.animation_position)
+	$CanvasLayer/hp_text.text = str(Global.player_healht)
 	
-	if Input.is_action_just_pressed("pause"):
+	#BUTTONS
+	if Input.is_action_just_pressed("esc"):
 		is_paused = !is_paused  # Переключаем паузу
 		Engine.time_scale = 0 if is_paused else 1
 		$CanvasLayer/pause.visible = is_paused
@@ -44,6 +46,10 @@ func _physics_process(delta: float) -> void:
 		$CanvasLayer/pause.visible = false  # Скрываем меню паузы
 		Engine.time_scale = 1  # Возвращаем нормальную скорость времени
 		Global.resume = false
+	if Global.save:
+		save_game()
+	if Global.load:
+		load_game()
 
 
 	$CanvasLayer/speed.text = str(speed)
@@ -193,3 +199,30 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 
 func _on_hit_box_body_exited(body: Node2D) -> void:
 	pass
+	
+# SAVE
+var save_path = "user://savegame.save"
+
+func save_game():
+	var file = FileAccess.open(save_path,FileAccess.WRITE)
+	
+	file.store_var(Global.days_count)
+	file.store_var(position.x)
+	file.store_var(position.y)
+	file.store_var(Global.animation_position)
+	#file.store_var(Global.player_healht)
+	#file.store_var(Global.stamina)
+	
+	Global.save = false
+
+func load_game():
+	var file = FileAccess.open(save_path,FileAccess.READ)
+	
+	Global.days_count = file.get_var(Global.days_count)
+	position.x = file.get_var(position.x)
+	position.y = file.get_var(position.y)
+	Global.animation_position = file.get_var(Global.animation_position)
+	#Global.player_healht = file.get_var(Global.player_healht)
+	#Global.stamina = file.get_var(Global.stamina)
+	
+	Global.load = false

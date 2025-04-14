@@ -36,7 +36,6 @@ func _process(delta: float) -> void:
 		
 		# Сохраняем текущую позицию анимации в Global
 		Global.animation_position = animP.current_animation_position
-		
 		days.text = str(Global.days_count) + " DAY"
 		time.text = "time: "  + str(int(Global.animation_position)) + "h" + " (" + str(Global.time_count) + ")"
 		
