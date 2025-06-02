@@ -31,7 +31,7 @@ func _ready() -> void:
 	position = Global.player_position
 
 func _physics_process(delta: float) -> void:
-	print(Global.animation_position)
+	#print(Global.animation_position)
 	$CanvasLayer/hp_text.text = str(Global.player_healht)
 	
 	#BUTTONS

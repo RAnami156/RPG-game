@@ -1046,19 +1046,19 @@ offset_bottom = 647.0
 text = "100"
 
 [node name="slime_killed" type="Label" parent="CanvasLayer"]
-offset_left = 990.0
-offset_top = -1.0
-offset_right = 1798.0
-offset_bottom = 136.0
+offset_left = 992.0
+offset_top = 82.0
+offset_right = 1800.0
+offset_bottom = 219.0
 scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 100
 text = "Slime Killed: 100 "
 
 [node name="pause" parent="CanvasLayer" instance=ExtResource("9_2fvbb")]
 offset_left = 4.0
-offset_top = 4.0
+offset_top = 10.0
 offset_right = 4.0
-offset_bottom = 4.0
+offset_bottom = 10.0
 
 [node name="hp_text" type="Label" parent="CanvasLayer"]
 z_index = 1
