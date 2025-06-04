@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=37 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" uid="uid://lv4uocwd1c1h" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -18,7 +18,9 @@
 [ext_resource type="Script" uid="uid://bxf1sj8guyo42" path="res://script/area_2d.gd" id="15_a0bac"]
 [ext_resource type="Texture2D" uid="uid://bqwiejpgubs0i" path="res://point2.png" id="16_1402k"]
 [ext_resource type="Texture2D" uid="uid://c2edemklcet6x" path="res://point.png" id="16_e4vd1"]
-[ext_resource type="Script" uid="uid://cy1h661b88csa" path="res://scene/sub_viewport.gd" id="16_tmyho"]
+[ext_resource type="Script" uid="uid://cy1h661b88csa" path="res://script/sub_viewport.gd" id="16_tmyho"]
+[ext_resource type="PackedScene" uid="uid://bplb04kqk63cg" path="res://scene/fast_slime.tscn" id="20_ol7uo"]
+[ext_resource type="PackedScene" uid="uid://vjdxw26xpmr6" path="res://scene/bomb-slime.tscn" id="21_a7xoa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4vd1"]
 texture = ExtResource("2_8gcjo")
@@ -733,6 +735,7 @@ layer_3/tile_data = PackedInt32Array(852011, 655366, 7, 2228283, 6, 1, 2293824, 
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 modulate = Color(0, 0, 0, 1)
+z_index = 1
 y_sort_enabled = true
 position = Vector2(45, 46)
 texture = ExtResource("16_1402k")
@@ -795,6 +798,12 @@ offset_bottom = 754.0
 scale = Vector2(0.055, 0.055)
 theme_override_font_sizes/font_size = 100
 text = "Kill 10 slides to fight the boss"
+
+[node name="fast-slime" parent="." instance=ExtResource("20_ol7uo")]
+position = Vector2(886, 207)
+
+[node name="enemy" parent="." instance=ExtResource("21_a7xoa")]
+position = Vector2(859, 309)
 
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="body_exited" from="house" to="." method="_on_house_body_exited"]

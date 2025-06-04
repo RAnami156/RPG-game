@@ -1047,9 +1047,9 @@ text = "100"
 
 [node name="slime_killed" type="Label" parent="CanvasLayer"]
 offset_left = 992.0
-offset_top = 82.0
+offset_top = 152.0
 offset_right = 1800.0
-offset_bottom = 219.0
+offset_bottom = 289.0
 scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 100
 text = "Slime Killed: 100 "

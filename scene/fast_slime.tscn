@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bplb04kqk63cg"]
+
+[ext_resource type="PackedScene" uid="uid://c537x7b50acea" path="res://scene/enemy.tscn" id="1_nlwy2"]
+[ext_resource type="Script" uid="uid://5s3it474d554" path="res://script/fast_slime.gd" id="2_kstuj"]
+
+[node name="fast-slime" instance=ExtResource("1_nlwy2")]
+script = ExtResource("2_kstuj")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+self_modulate = Color(1, 1, 0, 1)
+animation = &"Attack"
