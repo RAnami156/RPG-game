@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=39 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" uid="uid://lv4uocwd1c1h" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -21,6 +21,8 @@
 [ext_resource type="Script" uid="uid://cy1h661b88csa" path="res://script/sub_viewport.gd" id="16_tmyho"]
 [ext_resource type="PackedScene" uid="uid://bplb04kqk63cg" path="res://scene/fast_slime.tscn" id="20_ol7uo"]
 [ext_resource type="PackedScene" uid="uid://vjdxw26xpmr6" path="res://scene/bomb-slime.tscn" id="21_a7xoa"]
+[ext_resource type="PackedScene" uid="uid://cwhwsqw33tujj" path="res://rain.tscn" id="22_vme25"]
+[ext_resource type="PackedScene" uid="uid://cviibrc8jy0dp" path="res://puddle.tscn" id="23_oiypb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4vd1"]
 texture = ExtResource("2_8gcjo")
@@ -675,6 +677,7 @@ libraries = {
 }
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 energy = 0.0
 blend_mode = 1
 
@@ -748,6 +751,8 @@ limit_right = 1150
 limit_bottom = 650
 position_smoothing_enabled = true
 
+[node name="rain" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("22_vme25")]
+
 [node name="Point" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(1106, 51)
 texture = ExtResource("16_e4vd1")
@@ -804,6 +809,13 @@ position = Vector2(886, 207)
 
 [node name="enemy" parent="." instance=ExtResource("21_a7xoa")]
 position = Vector2(859, 309)
+
+[node name="rain" parent="." instance=ExtResource("22_vme25")]
+visible = false
+
+[node name="Puddle" parent="." instance=ExtResource("23_oiypb")]
+visible = false
+position = Vector2(358, 305)
 
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="body_exited" from="house" to="." method="_on_house_body_exited"]

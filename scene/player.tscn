@@ -972,7 +972,7 @@ script = ExtResource("1_k82lv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_qg6pd")
-animation = &"Attack_down"
+animation = &"Up"
 autoplay = "Idle_down"
 frame = 1
 

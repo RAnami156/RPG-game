@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cviibrc8jy0dp"]
+
+[ext_resource type="Texture2D" uid="uid://c4l32ri8bsdaa" path="res://RainOnFloor.png" id="2_d74ux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ulku"]
+atlas = ExtResource("2_d74ux")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r18a8"]
+atlas = ExtResource("2_d74ux")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aro7w"]
+atlas = ExtResource("2_d74ux")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3k82"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ulku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r18a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aro7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Puddle" type="Node2D"]
+y_sort_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r3k82")
+autoplay = "default"
+frame = 2
+frame_progress = 0.304702
