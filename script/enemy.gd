@@ -12,6 +12,7 @@ var player_in = false
 var health = 100
 var show_damage = false
 var already_dead = false
+var money = preload("res://scene/money.tscn")
 
 func _physics_process(delta: float) -> void:
 	hp_damage.visible = false
@@ -81,6 +82,10 @@ func die():
 	animP.play("Death")
 	await animP.animation_finished
 	queue_free()
+	var m = money.instantiate()
+	get_tree().current_scene.add_child(m)
+	m.global_position = global_position
+
 
 # Добавляем функцию для удаления данных о слайме
 func remove_slime_data():

@@ -4,6 +4,7 @@ var player_healht = 100 #save
 var player_damage = 20 
 var player_position = Vector2(583,293) #save
 var stamina = 100 #save
+var player_money = 0
 
 #ANIMATION
 var animation_position = 0.0  # Добавлена переменная для хранения позиции анимации

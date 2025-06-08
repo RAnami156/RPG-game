@@ -162,7 +162,6 @@ func idle():
 				anim.play("Idle_front")
 				
 func attack():
-	$CPUParticles2D.visible = false
 	velocity = Vector2.ZERO
 	can_move = false
 	if velocity == Vector2.ZERO:

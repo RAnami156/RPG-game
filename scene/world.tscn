@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=40 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" uid="uid://lv4uocwd1c1h" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -21,8 +21,9 @@
 [ext_resource type="Script" uid="uid://cy1h661b88csa" path="res://script/sub_viewport.gd" id="16_tmyho"]
 [ext_resource type="PackedScene" uid="uid://bplb04kqk63cg" path="res://scene/fast_slime.tscn" id="20_ol7uo"]
 [ext_resource type="PackedScene" uid="uid://vjdxw26xpmr6" path="res://scene/bomb-slime.tscn" id="21_a7xoa"]
-[ext_resource type="PackedScene" uid="uid://cwhwsqw33tujj" path="res://rain.tscn" id="22_vme25"]
-[ext_resource type="PackedScene" uid="uid://cviibrc8jy0dp" path="res://puddle.tscn" id="23_oiypb"]
+[ext_resource type="PackedScene" uid="uid://cwhwsqw33tujj" path="res://scene/rain.tscn" id="22_vme25"]
+[ext_resource type="PackedScene" uid="uid://cviibrc8jy0dp" path="res://scene/puddle.tscn" id="23_oiypb"]
+[ext_resource type="PackedScene" uid="uid://dgjtvqscrxu3p" path="res://scene/money.tscn" id="24_a81yy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4vd1"]
 texture = ExtResource("2_8gcjo")
@@ -816,6 +817,21 @@ visible = false
 [node name="Puddle" parent="." instance=ExtResource("23_oiypb")]
 visible = false
 position = Vector2(358, 305)
+
+[node name="money" parent="." instance=ExtResource("24_a81yy")]
+position = Vector2(441, 301)
+
+[node name="money2" parent="." instance=ExtResource("24_a81yy")]
+position = Vector2(669, 312)
+
+[node name="money3" parent="." instance=ExtResource("24_a81yy")]
+position = Vector2(427, 366)
+
+[node name="money4" parent="." instance=ExtResource("24_a81yy")]
+position = Vector2(615, 282)
+
+[node name="money5" parent="." instance=ExtResource("24_a81yy")]
+position = Vector2(494, 299)
 
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="body_exited" from="house" to="." method="_on_house_body_exited"]

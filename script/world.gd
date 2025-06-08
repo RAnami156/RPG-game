@@ -10,7 +10,7 @@ var house = false
 var slime_preload = preload("res://scene/enemy.tscn")
 var last_position = 0 
 
-var puddle_scene = preload("res://puddle.tscn")
+var puddle_scene = preload("res://scene/puddle.tscn")
 @export var puddle_lifetime: float = 10   # исчезают быстрее
 @export var spawn_delay: float = 0.03      # почти спам
 @export var puddle_max_count: int = 1000   # очень много
