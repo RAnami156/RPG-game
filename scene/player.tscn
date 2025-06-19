@@ -1066,6 +1066,12 @@ offset_left = 500.0
 offset_right = 540.0
 offset_bottom = 23.0
 
+[node name="money" type="Label" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 119.0
+offset_right = 45.0
+offset_bottom = 142.0
+
 [node name="Health_plus" type="Label" parent="."]
 modulate = Color(1, 0, 0, 1)
 offset_left = -4.0

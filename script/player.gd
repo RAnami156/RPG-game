@@ -32,7 +32,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#print(Global.animation_position)
+	max_health = Global.max_health
 	$CanvasLayer/hp_text.text = str(Global.player_healht)
+	$CanvasLayer/money.text = "money:" + str(Global.player_money)
 	
 	#BUTTONS
 	if Input.is_action_just_pressed("esc"):

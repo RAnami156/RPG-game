@@ -1,6 +1,7 @@
 extends Node
 #PLAYER
 var player_healht = 100 #save
+var max_health = 100
 var player_damage = 20 
 var player_position = Vector2(583,293) #save
 var stamina = 100 #save
