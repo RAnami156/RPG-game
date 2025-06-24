@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=41 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" uid="uid://lv4uocwd1c1h" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cwhwsqw33tujj" path="res://scene/rain.tscn" id="22_vme25"]
 [ext_resource type="PackedScene" uid="uid://cviibrc8jy0dp" path="res://scene/puddle.tscn" id="23_oiypb"]
 [ext_resource type="PackedScene" uid="uid://bvff2vpgkqu53" path="res://scene/shop.tscn" id="24_a81yy"]
+[ext_resource type="PackedScene" uid="uid://m33js8g6yt4c" path="res://scene/chest.tscn" id="25_qfj6m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4vd1"]
 texture = ExtResource("2_8gcjo")
@@ -820,6 +821,9 @@ position = Vector2(358, 305)
 
 [node name="shop" parent="." instance=ExtResource("24_a81yy")]
 position = Vector2(696, 255)
+
+[node name="chest" parent="." instance=ExtResource("25_qfj6m")]
+position = Vector2(506, 342)
 
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="body_exited" from="house" to="." method="_on_house_body_exited"]
