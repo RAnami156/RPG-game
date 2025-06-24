@@ -7,6 +7,10 @@ var player_position = Vector2(583,293) #save
 var stamina = 100 #save
 var player_money = 0
 
+var player_level = 0
+var player_xp = 0
+var xp_to_next_level = 100
+
 #ANIMATION
 var animation_position = 0.0  # Добавлена переменная для хранения позиции анимации
 

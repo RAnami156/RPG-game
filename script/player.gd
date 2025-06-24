@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var hp_bar = $"CanvasLayer/hp-bar"
 @onready var stamina_bar = $CanvasLayer/stamina
 @onready var text_slime_killed = $CanvasLayer/slime_killed
+@onready var level = $CanvasLayer/level
+
 
 
 enum Dir { DOWN, UP, LEFT, RIGHT }
@@ -31,10 +33,12 @@ func _ready() -> void:
 	position = Global.player_position
 
 func _physics_process(delta: float) -> void:
+	level_up()
+	level.text = str(Global.player_level) + " level"
 	#print(Global.animation_position)
 	max_health = Global.max_health
 	$CanvasLayer/hp_text.text = str(Global.player_healht)
-	$CanvasLayer/money.text = "money:" + str(Global.player_money)
+	$CanvasLayer/money.text = "money: " + str(Global.player_money)
 	
 	#BUTTONS
 	if Input.is_action_just_pressed("esc"):
@@ -125,6 +129,15 @@ func healing():
 		hp_bar.value = Global.player_healht
 	
 	is_healing = false  # Останавливаем, когда HP полное
+	
+func level_up():
+	if Global.player_xp >=Global.xp_to_next_level :
+		Global.player_level += 1
+		Global.player_xp -= Global.xp_to_next_level
+		Global.xp_to_next_level = int(Global.xp_to_next_level * 1.5)  # или +50, как хочешь
+
+		print("LEVEL UP! Твой уровень: ", Global.player_level)
+
 
 func up_move():
 	anim.play("Up")

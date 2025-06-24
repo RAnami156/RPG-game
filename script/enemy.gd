@@ -85,6 +85,7 @@ func die():
 	var m = money.instantiate()
 	get_tree().current_scene.add_child(m)
 	m.global_position = global_position
+	Global.player_xp += 150
 
 
 # Добавляем функцию для удаления данных о слайме
