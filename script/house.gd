@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 
 	# Переход ко сну
 	if can_sleep and Input.is_action_just_pressed("E"):
+		Global.quest_sleep = true
 		if get_tree():
 			get_tree().change_scene_to_file("res://scene/sleep.tscn")
 

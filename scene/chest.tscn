@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://m33js8g6yt4c"]
 
 [ext_resource type="Texture2D" uid="uid://dbojyctr14fyr" path="res://chest/chest_1.png" id="1_45vfh"]
-[ext_resource type="Script" uid="uid://ce6op4mivynb7" path="res://scene/chest.gd" id="1_d75my"]
+[ext_resource type="Script" uid="uid://ce6op4mivynb7" path="res://script/chest.gd" id="1_d75my"]
 [ext_resource type="Texture2D" uid="uid://bdo3kucsja8t7" path="res://chest/chest_2.png" id="2_d75my"]
 [ext_resource type="Texture2D" uid="uid://bex5tawvs2ohf" path="res://chest/chest_3.png" id="3_6u8te"]
 [ext_resource type="Texture2D" uid="uid://6vqijrdgnocf" path="res://chest/chest_4.png" id="4_w21yn"]
@@ -92,6 +92,33 @@ size = Vector2(12, 7)
 [sub_resource type="CircleShape2D" id="CircleShape2D_d75my"]
 radius = 13.0
 
+[sub_resource type="Animation" id="Animation_w21yn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -9)]
+}
+
 [sub_resource type="Animation" id="Animation_d75my"]
 length = 0.2
 loop_mode = 1
@@ -181,33 +208,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-4, -9), Vector2(-4, -50)]
-}
-
-[sub_resource type="Animation" id="Animation_w21yn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label2:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-4, -9)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iujxo"]

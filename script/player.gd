@@ -35,6 +35,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	level_up()
 	level.text = str(Global.player_level) + " level"
+	
+	if Global.slime_killed >= 1:
+		Global.quest_kill = true
 	#print(Global.animation_position)
 	max_health = Global.max_health
 	$CanvasLayer/hp_text.text = str(Global.player_healht)

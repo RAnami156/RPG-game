@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfig17881ette"]
+
+[ext_resource type="Script" uid="uid://cak4mwn2abd2q" path="res://scene/quests.gd" id="1_8haxi"]
+[ext_resource type="Texture2D" uid="uid://c7lqyvmle2gc1" path="res://gui1.png" id="1_qcoms"]
+[ext_resource type="Texture2D" uid="uid://c2ghowv6wtcrf" path="res://no.png" id="2_8haxi"]
+[ext_resource type="Texture2D" uid="uid://cmbfwpbxhgkju" path="res://yes.png" id="3_ktu4r"]
+[ext_resource type="FontFile" uid="uid://badnudgme8miw" path="res://MinimalPixelFont.ttf" id="4_ei4a1"]
+
+[sub_resource type="Animation" id="Animation_ktu4r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8haxi"]
+resource_name = "exit"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei4a1"]
+_data = {
+&"RESET": SubResource("Animation_ktu4r"),
+&"exit": SubResource("Animation_8haxi")
+}
+
+[node name="quests" type="Node2D"]
+script = ExtResource("1_8haxi")
+
+[node name="Gui1" type="Sprite2D" parent="."]
+position = Vector2(24, 16)
+texture = ExtResource("1_qcoms")
+
+[node name="sleep" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 137.0
+offset_bottom = 76.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_ei4a1")
+theme_override_font_sizes/font_size = 100
+text = "sleep"
+
+[node name="No" type="Sprite2D" parent="sleep"]
+visible = false
+position = Vector2(290, 40)
+scale = Vector2(10, 10)
+texture = ExtResource("2_8haxi")
+
+[node name="Yes" type="Sprite2D" parent="sleep"]
+position = Vector2(290, 40)
+scale = Vector2(10, 10)
+texture = ExtResource("3_ktu4r")
+
+[node name="kill" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 18.0
+offset_right = 52.0
+offset_bottom = 41.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("4_ei4a1")
+text = "kill 1 slime"
+
+[node name="No" type="Sprite2D" parent="kill"]
+visible = false
+position = Vector2(58, 6)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8haxi")
+
+[node name="Yes" type="Sprite2D" parent="kill"]
+position = Vector2(58, 6)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ktu4r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ei4a1")
+}

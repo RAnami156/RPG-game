@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://k8ldx8akthj3"]
+[gd_scene load_steps=80 format=3 uid="uid://k8ldx8akthj3"]
 
 [ext_resource type="Script" uid="uid://cnn02ivt0qp3h" path="res://script/player.gd" id="1_k82lv"]
 [ext_resource type="Texture2D" uid="uid://ykskkmi4457d" path="res://player.png" id="2_qqqae"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://m38t1swcy346" path="res://stamina-bar/stamina 1.png" id="7_10fbw"]
 [ext_resource type="Texture2D" uid="uid://d7thnio0irfs" path="res://stamina-bar/stamina 2.png" id="8_g64kx"]
 [ext_resource type="PackedScene" uid="uid://dloox04mrs508" path="res://scene/pause.tscn" id="9_2fvbb"]
+[ext_resource type="FontFile" uid="uid://badnudgme8miw" path="res://MinimalPixelFont.ttf" id="9_ml7e8"]
+[ext_resource type="PackedScene" uid="uid://cfig17881ette" path="res://scene/quests.tscn" id="10_ml7e8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouoto"]
 atlas = ExtResource("2_qqqae")
@@ -1067,10 +1069,12 @@ offset_right = 540.0
 offset_bottom = 23.0
 
 [node name="money" type="Label" parent="CanvasLayer"]
-offset_left = 6.0
-offset_top = 100.0
-offset_right = 60.0
-offset_bottom = 123.0
+offset_left = 4.0
+offset_top = 87.0
+offset_right = 58.0
+offset_bottom = 110.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("9_ml7e8")
 text = "money"
 
 [node name="level" type="Label" parent="CanvasLayer"]
@@ -1079,6 +1083,10 @@ offset_top = 76.0
 offset_right = 55.0
 offset_bottom = 99.0
 text = "0 level"
+
+[node name="quests" parent="CanvasLayer" instance=ExtResource("10_ml7e8")]
+position = Vector2(806, 3)
+scale = Vector2(4, 4)
 
 [node name="Health_plus" type="Label" parent="."]
 modulate = Color(1, 0, 0, 1)

@@ -30,3 +30,6 @@ var damage = false
 var damage_to_display = 0
 var days_count = 0 #save
 var end = false #save
+
+var quest_sleep = false
+var quest_kill = false 
