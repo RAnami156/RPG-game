@@ -813,7 +813,6 @@ position = Vector2(886, 207)
 position = Vector2(859, 309)
 
 [node name="rain" parent="." instance=ExtResource("22_vme25")]
-visible = false
 
 [node name="Puddle" parent="." instance=ExtResource("23_oiypb")]
 position = Vector2(358, 305)

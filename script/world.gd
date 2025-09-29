@@ -27,7 +27,7 @@ func _ready():
 	last_position = Global.animation_position 
 
 func _process(delta: float) -> void:
-	#spawn_puddle()
+	spawn_puddle()
 	if Global.player_healht <= 0:
 		animP.stop()
 	else:
