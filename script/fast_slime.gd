@@ -14,9 +14,10 @@ var show_damage = false
 var already_dead = false
 
 func _physics_process(delta: float) -> void:
+	print(hp_bar.visible)
 	hp_damage.visible = false
 	hp_bar.value = health
-	if health == 100:
+	if health == 50:
 		hp_bar.visible = false
 	else: 
 		hp_bar.visible = true
@@ -33,6 +34,7 @@ func _physics_process(delta: float) -> void:
 		return 
 	
 	if show_damage == true:
+		
 		hp_damage.visible = true
 		anim_damage.play("hp_minus")
 		hp_damage.text = "-" + str(Global.damage_to_display)
