@@ -14,7 +14,6 @@ var show_damage = false
 var already_dead = false
 
 func _physics_process(delta: float) -> void:
-	print(hp_bar.visible)
 	hp_damage.visible = false
 	hp_bar.value = health
 	if health == 50:
