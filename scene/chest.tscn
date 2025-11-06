@@ -87,7 +87,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hxrw"]
-size = Vector2(12, 7)
+size = Vector2(14, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d75my"]
 radius = 13.0
@@ -221,13 +221,14 @@ _data = {
 script = ExtResource("1_d75my")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 7)
 sprite_frames = SubResource("SpriteFrames_18xdq")
 animation = &"open"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 1.5)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_8hxrw")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -9,3 +9,6 @@ script = ExtResource("2_kstuj")
 [node name="AnimatedSprite2D" parent="." index="1"]
 self_modulate = Color(1, 1, 0, 1)
 animation = &"Attack"
+
+[node name="hp-bar" parent="." index="6"]
+max_value = 50.0
