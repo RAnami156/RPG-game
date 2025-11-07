@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=41 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" uid="uid://lv4uocwd1c1h" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="10_wigkg"]
 [ext_resource type="Script" uid="uid://yd53idp50a0v" path="res://script/camera_2d.gd" id="13_bqa5m"]
 [ext_resource type="Texture2D" uid="uid://bmyka8ibuyokf" path="res://circle.png" id="14_2p3rq"]
-[ext_resource type="Texture2D" uid="uid://2ohqvxty4uh8" path="res://map--.png" id="14_hnm4a"]
 [ext_resource type="Script" uid="uid://bxf1sj8guyo42" path="res://script/area_2d.gd" id="15_a0bac"]
 [ext_resource type="Texture2D" uid="uid://bqwiejpgubs0i" path="res://point2.png" id="16_1402k"]
 [ext_resource type="Texture2D" uid="uid://c2edemklcet6x" path="res://point.png" id="16_e4vd1"]
@@ -705,13 +704,6 @@ offset_bottom = 81.0
 theme_override_font_sizes/font_size = 30
 text = "time:"
 metadata/_edit_use_anchors_ = true
-
-[node name="Map--" type="Sprite2D" parent="CanvasLayer"]
-modulate = Color(0.552941, 0.435294, 0, 1)
-z_index = 3
-position = Vector2(1076, 74)
-scale = Vector2(1.68889, 1.68889)
-texture = ExtResource("14_hnm4a")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
 z_index = 2

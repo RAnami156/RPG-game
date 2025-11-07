@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://m33js8g6yt4c"]
+[gd_scene load_steps=27 format=3 uid="uid://m33js8g6yt4c"]
 
 [ext_resource type="Texture2D" uid="uid://dbojyctr14fyr" path="res://chest/chest_1.png" id="1_45vfh"]
 [ext_resource type="Script" uid="uid://ce6op4mivynb7" path="res://script/chest.gd" id="1_d75my"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://clndwvly20xoc" path="res://chest/chest_open_2.png" id="6_isxdh"]
 [ext_resource type="Texture2D" uid="uid://wkyio0rhtnat" path="res://chest/chest_open_3.png" id="7_h6sn0"]
 [ext_resource type="Texture2D" uid="uid://b4ugxqshfga05" path="res://chest/chest_open_4.png" id="8_b80yv"]
+[ext_resource type="FontFile" uid="uid://badnudgme8miw" path="res://MinimalPixelFont.ttf" id="10_6u8te"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iujxo"]
 atlas = ExtResource("3_6u8te")
@@ -239,12 +240,13 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_d75my")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -19.0
-offset_top = -18.0
-offset_right = 798.0
-offset_bottom = 119.0
+offset_left = -23.0
+offset_top = -13.0
+offset_right = 1102.0
+offset_bottom = 154.0
 scale = Vector2(0.05, 0.05)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("10_6u8te")
+theme_override_font_sizes/font_size = 200
 text = "click \"E\" for open"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -256,10 +258,11 @@ libraries = {
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -4.0
 offset_top = -9.0
-offset_right = 167.0
-offset_bottom = 128.0
+offset_right = 184.0
+offset_bottom = 158.0
 scale = Vector2(0.1, 0.1)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("10_6u8te")
+theme_override_font_sizes/font_size = 250
 text = "+3$"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvff2vpgkqu53"]
+[gd_scene load_steps=16 format=3 uid="uid://bvff2vpgkqu53"]
 
 [ext_resource type="Script" uid="uid://cfxcx5dxd1oku" path="res://script/shop.gd" id="1_e7rdd"]
 [ext_resource type="Texture2D" uid="uid://w22pii0njxrm" path="res://Idle Working.png" id="2_blqjs"]
+[ext_resource type="FontFile" uid="uid://badnudgme8miw" path="res://MinimalPixelFont.ttf" id="3_phbgv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgaav"]
 atlas = ExtResource("2_blqjs")
@@ -105,11 +106,12 @@ scale = Vector2(0.5, 0.5)
 
 [node name="stamina" type="Label" parent="Node2D"]
 offset_left = -78.0
-offset_top = -64.0
-offset_right = 319.0
-offset_bottom = 73.0
+offset_top = -66.0
+offset_right = 344.0
+offset_bottom = 101.0
 scale = Vector2(0.1, 0.1)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("3_phbgv")
+theme_override_font_sizes/font_size = 250
 text = "stamina"
 
 [node name="stamina2" type="Button" parent="Node2D"]
@@ -117,15 +119,18 @@ offset_left = -81.0
 offset_top = -49.0
 offset_right = -35.0
 offset_bottom = -18.0
+theme_override_fonts/font = ExtResource("3_phbgv")
+theme_override_font_sizes/font_size = 32
 text = "4$"
 
 [node name="heath" type="Label" parent="Node2D"]
 offset_left = -20.0
-offset_top = -64.0
+offset_top = -66.0
 offset_right = 377.0
-offset_bottom = 73.0
+offset_bottom = 271.0
 scale = Vector2(0.1, 0.1)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("3_phbgv")
+theme_override_font_sizes/font_size = 250
 text = "health
 "
 
@@ -134,15 +139,18 @@ offset_left = -23.0
 offset_top = -49.0
 offset_right = 23.0
 offset_bottom = -18.0
+theme_override_fonts/font = ExtResource("3_phbgv")
+theme_override_font_sizes/font_size = 32
 text = "2$"
 
 [node name="damage" type="Label" parent="Node2D"]
 offset_left = 34.0
-offset_top = -64.0
-offset_right = 431.0
-offset_bottom = 73.0
+offset_top = -66.0
+offset_right = 440.0
+offset_bottom = 101.0
 scale = Vector2(0.1, 0.1)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("3_phbgv")
+theme_override_font_sizes/font_size = 250
 text = "damage"
 
 [node name="damage2" type="Button" parent="Node2D"]
@@ -150,6 +158,8 @@ offset_left = 30.0
 offset_top = -49.0
 offset_right = 76.0
 offset_bottom = -18.0
+theme_override_fonts/font = ExtResource("3_phbgv")
+theme_override_font_sizes/font_size = 32
 text = "5$"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

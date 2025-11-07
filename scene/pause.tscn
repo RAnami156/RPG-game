@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dloox04mrs508"]
+[gd_scene load_steps=3 format=3 uid="uid://dloox04mrs508"]
 
 [ext_resource type="Script" uid="uid://dwmcbaxjf38ya" path="res://script/pause.gd" id="1_vj4lk"]
+[ext_resource type="FontFile" uid="uid://badnudgme8miw" path="res://MinimalPixelFont.ttf" id="2_e83wn"]
 
 [node name="pause" type="Control"]
 z_index = 2
@@ -42,6 +43,8 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_e83wn")
+theme_override_font_sizes/font_size = 32
 text = "Pause"
 horizontal_alignment = 1
 
@@ -50,6 +53,8 @@ layout_mode = 0
 offset_top = 67.0
 offset_right = 171.0
 offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("2_e83wn")
+theme_override_font_sizes/font_size = 32
 text = "Resume"
 
 [node name="save" type="Button" parent="Panel/VBoxContainer/Label"]
@@ -57,6 +62,8 @@ layout_mode = 0
 offset_top = 120.0
 offset_right = 171.0
 offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("2_e83wn")
+theme_override_font_sizes/font_size = 32
 text = "Save"
 
 [node name="load" type="Button" parent="Panel/VBoxContainer/Label"]
@@ -64,6 +71,8 @@ layout_mode = 0
 offset_top = 174.0
 offset_right = 171.0
 offset_bottom = 214.0
+theme_override_fonts/font = ExtResource("2_e83wn")
+theme_override_font_sizes/font_size = 32
 text = "Load"
 
 [node name="Menu" type="Button" parent="Panel/VBoxContainer/Label"]
@@ -71,6 +80,8 @@ layout_mode = 0
 offset_top = 227.0
 offset_right = 171.0
 offset_bottom = 267.0
+theme_override_fonts/font = ExtResource("2_e83wn")
+theme_override_font_sizes/font_size = 32
 text = "Menu"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Label/Resum" to="." method="_on_resum_pressed"]

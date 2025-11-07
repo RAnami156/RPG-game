@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bq2tfmtpegff"]
+[gd_scene load_steps=75 format=3 uid="uid://bq2tfmtpegff"]
 
 [ext_resource type="Script" uid="uid://dq4ph1d8w40o" path="res://script/menu.gd" id="1_4whuw"]
 [ext_resource type="Texture2D" uid="uid://c57mgg1wfy2yy" path="res://romario-tileMap/decor_16x16.png" id="1_pcgyp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://n2jm87pvxp40" path="res://romario-tileMap/objects.png" id="7_0h1k6"]
 [ext_resource type="Texture2D" uid="uid://chwpdk8sg43s3" path="res://romario-tileMap/Outdoor_Decor_Free.png" id="8_lvkst"]
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="9_gn1ui"]
+[ext_resource type="FontFile" uid="uid://badnudgme8miw" path="res://MinimalPixelFont.ttf" id="11_akoio"]
 [ext_resource type="Texture2D" uid="uid://ykskkmi4457d" path="res://player.png" id="12_a64k4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yucq"]
@@ -910,7 +911,8 @@ offset_top = 285.0
 offset_right = 587.0
 offset_bottom = 380.0
 scale = Vector2(0.4, 0.4)
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("11_akoio")
+theme_override_font_sizes/font_size = 100
 text = "Exit"
 
 [node name="play" type="Button" parent="."]
@@ -919,7 +921,8 @@ offset_top = 169.0
 offset_right = 670.0
 offset_bottom = 314.0
 scale = Vector2(0.4, 0.4)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("11_akoio")
+theme_override_font_sizes/font_size = 200
 text = "Play"
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -927,9 +930,9 @@ position = Vector2(414, 259)
 scale = Vector2(1.02932, 1.02932)
 zoom = Vector2(2.5, 2.5)
 limit_left = 0
-limit_top = 0
+limit_top = 29
 limit_right = 1150
-limit_bottom = 650
+limit_bottom = 679
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
