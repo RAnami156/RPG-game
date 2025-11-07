@@ -3,7 +3,7 @@ extends Node
 var player_healht = 100 #save
 var max_health = 100
 var player_damage = 20 
-var player_position = Vector2(583,293) #save
+var player_position = Vector2(565,325) #save
 var stamina = 100 #save
 var player_money = 0
 
@@ -32,4 +32,5 @@ var days_count = 0 #save
 var end = false #save
 
 var quest_sleep = false
-var quest_kill = false 
+var quest_kill = false
+var quest_talk = false 
