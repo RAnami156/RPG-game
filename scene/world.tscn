@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cviibrc8jy0dp" path="res://scene/puddle.tscn" id="23_oiypb"]
 [ext_resource type="PackedScene" uid="uid://bvff2vpgkqu53" path="res://scene/shop.tscn" id="24_a81yy"]
 [ext_resource type="PackedScene" uid="uid://m33js8g6yt4c" path="res://scene/chest.tscn" id="25_qfj6m"]
-[ext_resource type="PackedScene" uid="uid://bjkt4h88p7gin" path="res://scene/nps.tscn" id="26_n02kn"]
+[ext_resource type="PackedScene" uid="uid://bjkt4h88p7gin" path="res://scene/npc.tscn" id="26_n02kn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4vd1"]
 texture = ExtResource("2_8gcjo")

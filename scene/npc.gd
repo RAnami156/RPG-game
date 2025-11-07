@@ -2,13 +2,29 @@ extends Node2D
 
 @onready var anim = $AnimatedSprite2D
 @onready var text = $npcText
-var speed = 50  # Adjust movement speed
-var target_position = Vector2(450, 20)  # Where to move
+var body_in = true
+var speed = 50  
+var target_position = Vector2(450, 20)  
+var talk = false
+var kola = ["Hello", "Nigger", "Raw lox"]
 
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	#print(body_in)
+	#if Input.is_action_just_pressed("E"):
+		#print("piska", talk)
+		
+	if body_in and Input.is_action_just_pressed("E"):
+		talk = true
+	
+	if talk and Input.is_action_just_pressed("E"):
+		for i in range(kola.size()):
+			print(i)
+			if Input.is_action_just_pressed("E"):
+				text.text = kola[i]
+	
 	if Global.quest_talk:
 		
 		var direction = (target_position - global_position).normalized()
@@ -29,6 +45,8 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	text.visible = true
+	body_in = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	text.visible = false
+	body_in = false
