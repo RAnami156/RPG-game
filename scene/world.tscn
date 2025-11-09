@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dlp53ho73vyts"]
+[gd_scene load_steps=42 format=3 uid="uid://dlp53ho73vyts"]
 
 [ext_resource type="Script" uid="uid://lv4uocwd1c1h" path="res://script/label.gd" id="1_1s8af"]
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_cbbl7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="10_wigkg"]
 [ext_resource type="Script" uid="uid://yd53idp50a0v" path="res://script/camera_2d.gd" id="13_bqa5m"]
 [ext_resource type="Texture2D" uid="uid://bmyka8ibuyokf" path="res://circle.png" id="14_2p3rq"]
+[ext_resource type="FontFile" uid="uid://badnudgme8miw" path="res://MinimalPixelFont.ttf" id="14_n02kn"]
 [ext_resource type="Script" uid="uid://bxf1sj8guyo42" path="res://script/area_2d.gd" id="15_a0bac"]
 [ext_resource type="Texture2D" uid="uid://bqwiejpgubs0i" path="res://point2.png" id="16_1402k"]
 [ext_resource type="Texture2D" uid="uid://c2edemklcet6x" path="res://point.png" id="16_e4vd1"]
@@ -679,7 +680,6 @@ libraries = {
 }
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 energy = 0.0
 blend_mode = 1
 
@@ -692,7 +692,9 @@ offset_left = 395.0
 offset_top = 38.0
 offset_right = 685.0
 offset_bottom = 175.0
-theme_override_font_sizes/font_size = 100
+theme_override_colors/font_color = Color(1, 1, 1, 0.48235294)
+theme_override_fonts/font = ExtResource("14_n02kn")
+theme_override_font_sizes/font_size = 200
 text = "0 DAY"
 metadata/_edit_use_anchors_ = true
 
@@ -701,7 +703,8 @@ offset_left = 3.0
 offset_top = 39.0
 offset_right = 77.0
 offset_bottom = 81.0
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("14_n02kn")
+theme_override_font_sizes/font_size = 64
 text = "time:"
 metadata/_edit_use_anchors_ = true
 
@@ -776,7 +779,8 @@ offset_top = 202.0
 offset_right = 1077.0
 offset_bottom = 353.0
 scale = Vector2(0.2, 0.2)
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("14_n02kn")
+theme_override_font_sizes/font_size = 120
 text = "Press 'E'
  to get house."
 horizontal_alignment = 1

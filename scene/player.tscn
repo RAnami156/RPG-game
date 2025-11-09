@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://k8ldx8akthj3"]
+[gd_scene load_steps=81 format=3 uid="uid://k8ldx8akthj3"]
 
 [ext_resource type="Script" uid="uid://cnn02ivt0qp3h" path="res://script/player.gd" id="1_k82lv"]
 [ext_resource type="Texture2D" uid="uid://ykskkmi4457d" path="res://player.png" id="2_qqqae"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dloox04mrs508" path="res://scene/pause.tscn" id="9_2fvbb"]
 [ext_resource type="FontFile" uid="uid://badnudgme8miw" path="res://MinimalPixelFont.ttf" id="9_ml7e8"]
 [ext_resource type="PackedScene" uid="uid://cfig17881ette" path="res://scene/quests.tscn" id="10_ml7e8"]
+[ext_resource type="Texture2D" uid="uid://bmyka8ibuyokf" path="res://circle.png" id="11_ihjo1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouoto"]
 atlas = ExtResource("2_qqqae")
@@ -1101,6 +1102,11 @@ offset_bottom = 50.0
 scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 50
 text = "+2"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 7)
+scale = Vector2(0.09499999, 0.095000006)
+texture = ExtResource("11_ihjo1")
 
 [connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="hit_box" to="." method="_on_hit_box_body_exited"]

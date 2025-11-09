@@ -20,9 +20,7 @@ func _physics_process(delta: float) -> void:
 		hp_bar.visible = false
 	else: 
 		hp_bar.visible = true
-	
-	# Обновляем данные слайма в глобальном массиве
-	update_slime_data()
+
 		
 	if health <= 0 and not already_dead:
 		already_dead = true  # Отмечаем, что смерть уже обработана
@@ -53,43 +51,17 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		anim.play("Idle")
 
-# Добавляем новую функцию для обновления данных
-func update_slime_data():
-	# Найдем этого слайма в массиве по его позиции
-	var found = false
-	for i in range(Global.slime_data.size()):
-		# Используем приблизительное сравнение, так как позиция может немного меняться
-		if Global.slime_data[i].position.distance_to(position) < 10:
-			# Обновляем данные
-			Global.slime_data[i].health = health
-			Global.slime_data[i].position = position
-			found = true
-			break
-	
-	# Если не нашли, добавляем нового слайма
-	if not found:
-		Global.slime_data.append({
-			"position": position,
-			"health": health
-		})
+
 
 func die():
 	can_move = false
 	health = 0
 	set_physics_process(false)
-	# Удаляем данные о слайме
-	remove_slime_data()
 	animP.play("Death")
 	await animP.animation_finished
 	queue_free()
 
-# Добавляем функцию для удаления данных о слайме
-func remove_slime_data():
-	for i in range(Global.slime_data.size()):
-		if Global.slime_data[i].position.distance_to(position) < 10:
-			Global.slime_data.remove_at(i)
-			break
-		
+
 func _on_detector_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		player = body
