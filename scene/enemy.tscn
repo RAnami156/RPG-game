@@ -590,7 +590,7 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4.5)
 sprite_frames = SubResource("SpriteFrames_vff81")
-animation = &"Death"
+animation = &"Attack"
 autoplay = "Idle"
 offset = Vector2(0, 3)
 
