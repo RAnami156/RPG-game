@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://1sbslrduc1ks"]
+[gd_scene load_steps=31 format=3 uid="uid://1sbslrduc1ks"]
 
 [ext_resource type="Texture2D" uid="uid://1in8w1eifrq2" path="res://slime.png" id="1_0v4cj"]
+[ext_resource type="Script" uid="uid://c22b6aahi2njp" path="res://boss.gd" id="1_et0im"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0v4cj"]
 atlas = ExtResource("1_0v4cj")
@@ -200,29 +201,32 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v4cj"]
-size = Vector2(16, 7)
+[sub_resource type="CircleShape2D" id="CircleShape2D_285t0"]
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0v4cj"]
 radius = 55.432957
 
 [node name="boss" type="CharacterBody2D"]
 scale = Vector2(4, 4)
+script = ExtResource("1_et0im")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ot3je")
-animation = &"Walk"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 1
-frame_progress = 0.15541574
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_0v4cj")
+position = Vector2(0, 2.75)
+shape = SubResource("CircleShape2D_285t0")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.75)
 shape = SubResource("CircleShape2D_0v4cj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
