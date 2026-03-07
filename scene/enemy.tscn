@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c537x7b50acea"]
+[gd_scene format=3 uid="uid://c537x7b50acea"]
 
 [ext_resource type="Script" uid="uid://dda3oxrxscvmk" path="res://script/enemy.gd" id="1_5v0jf"]
 [ext_resource type="Texture2D" uid="uid://1in8w1eifrq2" path="res://slime.png" id="2_5vdto"]
@@ -577,57 +577,55 @@ _data = {
 &"hp_minus": SubResource("Animation_1wx00")
 }
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" unique_id=886840470]
 y_sort_enabled = true
-collision_layer = 4
+collision_layer = 5
 script = ExtResource("1_5v0jf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_c5u1v")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1397232393]
+libraries/ = SubResource("AnimationLibrary_c5u1v")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=399936309]
 position = Vector2(0, -4.5)
 sprite_frames = SubResource("SpriteFrames_vff81")
 animation = &"Attack"
 autoplay = "Idle"
 offset = Vector2(0, 3)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661965081]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_04jut")
 
-[node name="detector" type="Area2D" parent="."]
+[node name="detector" type="Area2D" parent="." unique_id=2016336752]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detector" unique_id=1275961098]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_bvau2")
 
-[node name="hit-box" type="Area2D" parent="."]
+[node name="hit-box" type="Area2D" parent="." unique_id=865037951]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hit-box"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit-box" unique_id=835108350]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_m4dle")
 disabled = true
 
-[node name="Damage-zone" type="Area2D" parent="."]
+[node name="Damage-zone" type="Area2D" parent="." unique_id=1811648601]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage-zone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage-zone" unique_id=636433118]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_4nrhb")
 
-[node name="hp-bar" type="TextureProgressBar" parent="."]
+[node name="hp-bar" type="TextureProgressBar" parent="." unique_id=1169329071]
 z_index = 1
 offset_left = -12.0
 offset_top = -10.0
-offset_right = 11.0
+offset_right = 12.0
 offset_bottom = -2.0
 value = 50.0
 nine_patch_stretch = true
@@ -635,15 +633,13 @@ texture_under = ExtResource("3_8qqhw")
 texture_progress = ExtResource("4_3s0dt")
 tint_progress = Color(1, 0, 0, 0.670588)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=247231946]
 scale = Vector2(0.2, 0.2)
 
-[node name="AnimaDamage" type="AnimationPlayer" parent="Node2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_d74g0")
-}
+[node name="AnimaDamage" type="AnimationPlayer" parent="Node2D" unique_id=66412771]
+libraries/ = SubResource("AnimationLibrary_d74g0")
 
-[node name="hp" type="Label" parent="Node2D"]
+[node name="hp" type="Label" parent="Node2D" unique_id=468597066]
 self_modulate = Color(1, 0, 0, 0.992157)
 z_index = 1
 offset_left = -30.0

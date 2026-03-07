@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://u8pdd1cqvixx"]
+
+[ext_resource type="Script" uid="uid://d2nw1ttpm4soq" path="res://script/laser_bullet.gd" id="1_7a13g"]
+[ext_resource type="Texture2D" uid="uid://chsymsv833r2e" path="res://icon.svg" id="1_iyxd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a13g"]
+size = Vector2(16, 12)
+
+[node name="laser_bullet" type="Area2D" unique_id=728796045]
+position = Vector2(1, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7a13g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=540497861]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_7a13g")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=2123033402]
+modulate = Color(1, 0, 0.016666412, 1)
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(-2, -2.9802322e-08)
+scale = Vector2(0.12500001, 0.09375)
+texture = ExtResource("1_iyxd1")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://diuehny2go2eq"]
+[gd_scene format=3 uid="uid://diuehny2go2eq"]
 
 [ext_resource type="PackedScene" uid="uid://k8ldx8akthj3" path="res://scene/player.tscn" id="1_kuykp"]
 [ext_resource type="Script" uid="uid://yd53idp50a0v" path="res://script/camera_2d.gd" id="2_aio8c"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://n2jm87pvxp40" path="res://romario-tileMap/objects.png" id="9_hdikd"]
 [ext_resource type="Texture2D" uid="uid://chwpdk8sg43s3" path="res://romario-tileMap/Outdoor_Decor_Free.png" id="10_hlsck"]
 [ext_resource type="Texture2D" uid="uid://bvv1fpbl88qvw" path="res://romario-tileMap/plains.png" id="11_thnrl"]
-[ext_resource type="PackedScene" uid="uid://1sbslrduc1ks" path="res://scene/boss.tscn" id="12_r70ae"]
+[ext_resource type="PackedScene" uid="uid://buoy5v4p4p8ia" path="res://scene/boss_2.tscn" id="12_r70ae"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp3b2"]
 texture = ExtResource("3_4x0lo")
@@ -468,12 +468,12 @@ sources/6 = SubResource("TileSetAtlasSource_eedp3")
 sources/7 = SubResource("TileSetAtlasSource_myeih")
 sources/8 = SubResource("TileSetAtlasSource_31amo")
 
-[node name="Boss_level" type="Node2D"]
+[node name="Boss_level" type="Node2D" unique_id=142932175]
 
-[node name="player" parent="." instance=ExtResource("1_kuykp")]
+[node name="player" parent="." unique_id=187151872 instance=ExtResource("1_kuykp")]
 position = Vector2(578, 331)
 
-[node name="Camera2D2" type="Camera2D" parent="player"]
+[node name="Camera2D2" type="Camera2D" parent="player" unique_id=1662644178]
 zoom = Vector2(2.5, 2.5)
 limit_left = 350
 limit_top = 164
@@ -482,7 +482,7 @@ limit_bottom = 456
 position_smoothing_enabled = true
 script = ExtResource("2_aio8c")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." unique_id=474110533]
 rotation = -0.0015473461
 tile_set = SubResource("TileSet_i8qvr")
 format = 2
@@ -492,6 +492,10 @@ layer_0/tile_data = PackedInt32Array(1376292, 2, 0, 1376291, 2, 0, 1376290, 2, 0
 layer_1/name = "Layer1"
 layer_1/tile_data = PackedInt32Array(1376278, 6, 5, 983062, 6, 5, 1507350, 6, 5, 1572887, 6, 5, 1638425, 6, 5, 851993, 6, 5, 786455, 6, 5, 720923, 6, 5, 720926, 6, 5, 786461, 6, 5, 786463, 6, 5, 720928, 6, 5, 786465, 6, 5, 720931, 6, 5, 852004, 6, 5, 720934, 6, 5, 852006, 6, 5, 720936, 6, 5, 852008, 6, 5, 720939, 6, 5, 786475, 6, 5, 786481, 6, 5, 852015, 6, 5, 917553, 6, 5, 983088, 6, 5, 1048625, 6, 5, 1048623, 6, 5, 1179696, 6, 5, 1179698, 6, 5, 1245232, 6, 5, 1245231, 6, 5, 1245234, 6, 5, 1310770, 6, 5, 1376303, 6, 5, 1441842, 6, 5, 1507375, 6, 5, 1572914, 6, 5, 1572913, 6, 5, 1703985, 6, 5, 1769522, 6, 5, 1769519, 6, 5, 1835033, 6, 5, 1703963, 6, 5, 1835036, 6, 5, 1703964, 6, 5, 1835038, 6, 5, 1703966, 6, 5, 1835040, 6, 5, 1703969, 6, 5, 1835042, 6, 5, 1703972, 6, 5, 1835045, 6, 5, 1703974, 6, 5, 1835047, 6, 5, 1703977, 6, 5, 1835053, 6, 5, 1703979, 6, 5, 1572911, 6, 5, 852010, 6, 5, 917538, 6, 5, 851995, 6, 5, 1835051, 6, 5, 1835049, 6, 5, 1703981, 6, 5, 852013, 6, 5, 852014, 6, 5, 655406, 6, 5, 1507351, 6, 5, 1114134, 6, 5, 1179670, 6, 5, 1310742, 6, 5, 851989, 6, 5, 917524, 6, 5, 1048596, 6, 5, 1114132, 6, 5, 1179668, 6, 5, 1310740, 6, 5, 1376276, 6, 5, 1441812, 6, 5, 1507348, 6, 5, 1572884, 6, 5, 1638420, 6, 5, 1638421, 6, 5, 1703957, 6, 5, 1769493, 6, 5, 1769494, 6, 5, 1835030, 6, 5, 1835031, 6, 5, 1638423, 6, 5)
 
-[node name="boss" parent="." instance=ExtResource("12_r70ae")]
-z_index = 2
-position = Vector2(648, 316)
+[node name="boss2" parent="." unique_id=756861145 instance=ExtResource("12_r70ae")]
+position = Vector2(501, 311)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1364727293]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=776857413]
+polygon = PackedVector2Array(387, 245, 461, 237, 478, 227, 515, 230, 554, 257, 589, 239, 643, 230, 689, 240, 729, 239, 743, 248, 742, 308, 743, 357, 740, 384, 735, 397, 668, 399, 624, 402, 602, 402, 556, 396, 525, 395, 493, 394, 468, 392, 445, 391, 410, 378, 393, 358, 381, 329, 381, 294, 382, 259, 384, 243, 384, 211, 357, 221, 344, 278, 348, 343, 391, 395, 443, 412, 514, 423, 608, 426, 683, 429, 754, 417, 787, 372, 789, 274, 742, 201, 707, 172, 609, 172, 443, 188, 387, 187)

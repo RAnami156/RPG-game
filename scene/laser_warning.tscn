@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d3mscodbq457r"]
+
+[sub_resource type="GDScript" id="GDScript_o3vek"]
+script/source = "extends Node2D
+
+@onready var line = $Line2D
+
+var direction = Vector2.ZERO
+var length = 600.0
+
+func setup(dir: Vector2) -> void:
+	direction = dir
+	line.clear_points()
+	line.add_point(Vector2.ZERO)
+	line.add_point(direction * length)
+	blink()
+
+func blink() -> void:
+	for i in 3:
+		line.visible = true
+		await get_tree().create_timer(0.2).timeout
+		line.visible = false
+		await get_tree().create_timer(0.2).timeout
+	
+	queue_free()
+"
+
+[node name="laser_warning" type="Node2D" unique_id=104707584]
+script = SubResource("GDScript_o3vek")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=742191446]
+points = PackedVector2Array(3, 7)
+width = 1.0
+default_color = Color(1, 0, 0, 0.30588236)
