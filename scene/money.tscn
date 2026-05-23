@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgjtvqscrxu3p"]
+[gd_scene format=3 uid="uid://dgjtvqscrxu3p"]
 
 [ext_resource type="Script" uid="uid://ch1x8p73yqkjh" path="res://script/money.gd" id="1_wbkft"]
 [ext_resource type="Texture2D" uid="uid://c0groatmn3wsi" path="res://MonedaD.png" id="2_fgl4h"]
+[ext_resource type="AudioStream" uid="uid://c5tf10dk3xljy" path="res://brackeys_platformer_assets/sounds/coin.wav" id="3_fgl4h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_givlx"]
 atlas = ExtResource("2_fgl4h")
@@ -223,25 +224,26 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3glog"]
 
-[node name="money" type="Node2D"]
+[node name="money" type="Node2D" unique_id=325641577]
 script = ExtResource("1_wbkft")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1986178227]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_nc6xs")
 animation = &"up"
 frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_oojwf")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=187520962]
+libraries/ = SubResource("AnimationLibrary_oojwf")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1291661593]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=193974563]
 shape = SubResource("CircleShape2D_3glog")
+
+[node name="coin_sound" type="AudioStreamPlayer2D" parent="." unique_id=754033643]
+stream = ExtResource("3_fgl4h")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
